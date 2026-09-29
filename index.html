@@ -1,0 +1,123 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SAY AI Lab 汉语</title><meta name="description" content="Kichina · Chinese learning and teaching pages for SAY AI Lab"><style>:root{--bg:#f6f7f4;--card:#fff;--ink:#1d2a24;--mut:#63706a;--line:#dfe5e0;--pri:#128c5a;--pri2:#0e6e47;--acc:#e0a526;--bad:#d64541;--good:#1fa463;--soft:#e8f5ee;--red:#c0392b;--blue:#2d6cdf;--r:14px}
+:root[data-theme="dark"]{--bg:#141a17;--card:#1d2621;--ink:#e6efe9;--mut:#9aa9a1;--line:#2f3a34;--soft:#1f3a2c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141a17;--card:#1d2621;--ink:#e6efe9;--mut:#9aa9a1;--line:#2f3a34;--soft:#1f3a2c}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif}
+a{color:var(--pri)}button{font:inherit}
+.top{position:sticky;top:0;z-index:20;background:var(--pri2);color:#fff;box-shadow:0 2px 8px #0002}
+.top .in{max-width:1100px;margin:auto;padding:8px 14px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.top h1{font-size:17px;margin:0;font-weight:700;letter-spacing:.2px}.top h1 small{opacity:.8;font-weight:400;font-size:12px;display:block}
+.top nav{display:flex;flex-wrap:wrap;gap:4px;margin-left:auto}
+.top nav button,.top nav a{background:#ffffff1a;color:#fff;border:0;border-radius:999px;padding:5px 11px;cursor:pointer;font-size:14px;text-decoration:none}
+.top nav button.on{background:#fff;color:var(--pri2);font-weight:700}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;max-width:1100px;margin:8px auto 0;padding:0 14px;font-size:13px;color:var(--mut)}
+.bar label{display:inline-flex;gap:4px;align-items:center;cursor:pointer}
+.bar .who{margin-left:auto;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+main{max-width:1100px;margin:auto;padding:12px 14px 80px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin:12px 0}
+.card h2{margin:0 0 8px;font-size:20px}.card h3{margin:14px 0 6px;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px;cursor:pointer;transition:.15s}
+.tile:hover{border-color:var(--pri);transform:translateY(-1px)}
+.tile .n{font-size:12px;color:var(--mut)}.tile .t{font-size:17px;font-weight:700}.tile .s{font-size:13px;color:var(--mut)}
+.tile .done{float:right;font-size:12px;background:var(--soft);color:var(--pri2);border-radius:999px;padding:1px 8px}
+.pill{display:inline-block;font-size:12px;border-radius:999px;padding:2px 9px;background:var(--soft);color:var(--pri2);margin:2px 4px 2px 0}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;font-size:14px}
+.tabs button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:10px;padding:8px 14px;background:var(--pri);color:#fff;cursor:pointer;font-weight:600;font-size:15px}
+.btn.alt{background:var(--card);color:var(--pri2);border:1.5px solid var(--pri)}.btn.warn{background:var(--acc);color:#222}.btn.sm{padding:4px 10px;font-size:13px;border-radius:8px}
+.btn:disabled{opacity:.45;cursor:default}
+.play{border:0;background:var(--soft);color:var(--pri2);border-radius:999px;width:30px;height:30px;cursor:pointer;font-size:13px;flex:none;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}
+.play:hover{background:var(--pri);color:#fff}.play.slow{width:auto;padding:0 8px;font-size:11px}
+.zh{font-size:1.05em}.py{color:var(--blue);font-size:.9em}.sw{color:#8a5a00}.en{color:var(--mut);font-size:.88em}
+:root[data-theme="dark"] .sw{color:#e8b64c}
+.hide-en .en,.hide-py .py,.hide-sw .sw{display:none!important}
+.tri>span{display:block}.tri.inl>span{display:inline;margin-right:8px}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.word{border:1px solid var(--line);border-radius:12px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;background:var(--card)}
+.word .h{font-size:26px;line-height:1.1;cursor:pointer}.word .h:hover{color:var(--red)}
+.word .img{font-size:26px}
+.line{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px dashed var(--line)}
+.line .spk{font-weight:700;color:var(--pri2);min-width:3.2em}
+.line .zh{font-size:19px}
+.line.on{background:#fff6d6}:root[data-theme="dark"] .line.on{background:#3a3520}
+.gram{border-left:4px solid var(--acc);padding:8px 12px;background:var(--card);border-radius:0 10px 10px 0;margin:10px 0}
+.gram .pat{font-family:ui-monospace,Menlo,monospace;background:var(--soft);padding:2px 8px;border-radius:6px;display:inline-block;margin:4px 0}
+.mis{font-size:14px;margin-top:6px}.mis .w{color:var(--bad);text-decoration:line-through}.mis .r{color:var(--good);font-weight:600}
+.tbox{background:#fff9e8;border:1px solid #f0d58a;border-radius:12px;padding:10px 14px;margin:10px 0}
+:root[data-theme="dark"] .tbox{background:#2d2816;border-color:#6b5a26}
+.tbox h4{margin:0 0 4px}
+.q{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;background:var(--card)}
+.q .qn{font-weight:700;color:var(--mut);margin-right:6px}
+.q .opts{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.opt{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:7px 12px;cursor:pointer;font-size:17px;min-width:44px}
+.opt:hover{border-color:var(--pri)}.opt.sel{border-color:var(--blue);background:#eaf1ff}
+:root[data-theme="dark"] .opt.sel{background:#1c2c4a}
+.opt.ok{border-color:var(--good);background:#e3f7ea;color:#0b5a2f}.opt.no{border-color:var(--bad);background:#fde8e7;color:#8c1d19}
+.q input[type=text],.q textarea,.inp{border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;font-size:17px;width:100%;max-width:520px;background:var(--card);color:var(--ink)}
+.q textarea{min-height:90px;max-width:100%}
+.fb{margin-top:6px;font-size:14px;border-radius:8px;padding:6px 10px;display:none}
+.fb.show{display:block}.fb.ok{background:#e3f7ea;color:#0b5a2f}.fb.no{background:#fde8e7;color:#8c1d19}.fb.info{background:var(--soft);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;min-height:44px;padding:6px;border:1.5px dashed var(--line);border-radius:10px;margin:6px 0}
+.chip{border:1.5px solid var(--line);background:var(--card);border-radius:9px;padding:5px 10px;cursor:pointer;font-size:18px;color:var(--ink)}
+.chip.used{opacity:.25;pointer-events:none}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-width:560px}
+.match .opt{width:100%;text-align:left}.match .opt.gone{visibility:hidden}
+.score{font-size:15px;font-weight:700}
+.keyhide .key{display:none}
+.overlay{position:fixed;inset:0;background:#0008;z-index:50;display:flex;align-items:center;justify-content:center;padding:10px}
+.duo{background:var(--card);width:min(720px,100%);max-height:96vh;overflow:auto;border-radius:18px;padding:14px 16px;position:relative}
+.duo .hd{display:flex;align-items:center;gap:10px}
+.duo .prog{flex:1;height:14px;background:var(--line);border-radius:99px;overflow:hidden}.duo .prog i{display:block;height:100%;background:var(--good);transition:.3s}
+.duo .hearts{color:var(--bad);font-weight:700;white-space:nowrap}.duo .x{border:0;background:none;font-size:22px;cursor:pointer;color:var(--mut)}
+.duo .body{min-height:250px;padding:10px 0}
+.duo .ft{position:sticky;bottom:0;background:var(--card);padding-top:8px;display:flex;gap:10px;align-items:center;justify-content:space-between;border-top:1px solid var(--line)}
+.duo .ft.ok{background:#e3f7ea}.duo .ft.no{background:#fde8e7}
+:root[data-theme="dark"] .duo .ft.ok{background:#173726}:root[data-theme="dark"] .duo .ft.no{background:#3b1a19}
+.big{font-size:34px;text-align:center;margin:10px 0}
+.hz{display:inline-block;width:110px;height:110px;margin:4px;background:#fff;border:2px solid #333;position:relative}
+.hz svg.grid{position:absolute;inset:0}
+.hzwrap{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-end}
+.hzbox{text-align:center;font-size:12px}
+table.t{border-collapse:collapse;width:100%;font-size:14px}table.t td,table.t th{border:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
+table.t th{background:var(--soft)}
+.pytab{overflow:auto;max-height:520px}.pytab td{text-align:center;cursor:pointer;font-size:13px;padding:3px}.pytab td:hover{background:var(--soft)}
+.muted{color:var(--mut);font-size:14px}
+details{margin:6px 0}summary{cursor:pointer;font-weight:600}
+.timer{font:700 28px ui-monospace,monospace;color:var(--pri2)}
+.step{display:flex;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line)}.step .m{min-width:48px;font-weight:700;color:var(--acc)}
+.step.cur{background:var(--soft)}
+.flex{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.right{margin-left:auto}
+.xp{font-weight:700;color:var(--acc)}
+.path{display:flex;flex-direction:column;align-items:center;gap:14px;padding:10px}
+.node{width:78px;height:78px;border-radius:50%;border:0;background:var(--pri);color:#fff;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 6px 0 var(--pri2);position:relative}
+.node.lock{background:#b8c2bc;box-shadow:0 6px 0 #8e9892}.node.gold{background:var(--acc);box-shadow:0 6px 0 #a67a14;color:#222}
+.node small{display:block;font-weight:400;font-size:11px}
+.pathrow{display:flex;gap:16px;align-items:center}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:8px 16px;border-radius:999px;z-index:99;font-size:14px}
+video{max-width:100%;border-radius:10px;background:#000}
+.lib li{margin:3px 0}
+@media (max-width:600px){.top h1{font-size:15px}.line .zh{font-size:17px}.word .h{font-size:22px}.hz{width:92px;height:92px}.match{grid-template-columns:1fr 1fr}}
+@media print{.top,.bar,.noprint,.btn,.play,.tabs{display:none!important}body{background:#fff;color:#000}.card{border:0;padding:0}.q{break-inside:avoid}.keyhide .key{display:none}.printkey .key{display:block!important}}
+.btn .sw,.btn .en,.tabs button.on .sw,.tabs button.on .en,.node .sw{color:inherit!important;opacity:.85}
+.btn.alt .sw{color:#8a5a00!important}
+.tabs button .en,.btn .en{font-size:.8em}
+@media (max-width:600px){.top{position:static}.top nav a{font-size:12px;padding:4px 8px}}
+</style></head><body>
+<header class="top"><div class="in"><h1>SAY AI Lab · 汉语 AI 实验室<small>Maabara ya AI ya Kichina · Chinese AI Lab · v2.0 · 2026-09-28</small></h1></div></header>
+<main>
+<div class="card"><h2><span class="tri"><span class="zh">给桑给巴尔本土汉语老师、汉语爱好者和学生</span><span class="sw">Kwa walimu wa Kichina wa Zanzibar, wapenzi wa Kichina na wanafunzi</span><span class="en">For Zanzibar's local Chinese teachers, learners and students</span></span></h2>
+<span class="tri"><span class="zh">六个网页，全部离线可用。前三个给老师和爱好者提升、检测汉语水平（HSK 1–5）；后三个给中学和小学课堂：F2 和 F4 备考、F1/F3/小学日常教学。</span><span class="sw">Kurasa sita, zote zinafanya kazi bila mtandao. Tatu za kwanza ni za walimu na wapenzi kuinua na kupima Kichina chao (HSK 1–5); tatu za mwisho ni za darasani: maandalizi ya F2 na F4, na ufundishaji wa kila siku wa F1/F3/msingi.</span><span class="en">Six pages, all offline. Pages ①–③ build and test teachers' own Chinese (HSK 1–5); the other three serve classrooms.</span></span></div>
+<div class="grid"><a class="tile" href="hsk-1-yuyin-hanzi.html" style="text-decoration:none;color:inherit"><div class="n">①</div><div class="t">语音与汉字</div><div class="s sw">Matamshi na herufi · Pronunciation & characters</div><p style="font-size:14px;margin:6px 0 0"><span class="tri"><span class="zh">声调、声母、韵母、变调；笔画、笔顺规则、部首；拼音总表点读；声调训练；任何汉字的笔顺动画和描红。</span><span class="sw">Toni, sauti za mwanzo na mwisho, mabadiliko ya toni; mistari, kanuni za mpangilio, vijenzi; jedwali la pinyin; mazoezi ya toni; uhuishaji wa mistari ya herufi yoyote.</span><span class="en">Tones, initials, finals, sandhi; strokes, stroke-order rules, radicals; clickable pinyin chart; tone trainer; stroke animation for any character.</span></span></p></a><a class="tile" href="hsk-2-kecheng.html" style="text-decoration:none;color:inherit"><div class="n">②</div><div class="t">HSK 1–5 课程</div><div class="s sw">Kozi ya HSK 1–5 · HSK 1–5 course</div><p style="font-size:14px;margin:6px 0 0"><span class="tri"><span class="zh">90 课：生词（读音+笔顺）、完整课文（逐句播放）、语法要点、练习（多邻国式闯关）、口语跟读、动画视频和示范课、同课号课本录音。</span><span class="sw">Masomo 90: maneno (matamshi + mistari), masomo kamili (kusoma sentensi kwa sentensi), sarufi, mazoezi ya changamoto, kusoma kwa sauti, video.</span><span class="en">90 lessons with words, full texts, grammar, Duolingo-style practice, read-aloud and videos.</span></span></p></a><a class="tile" href="hsk-3-ceshi.html" style="text-decoration:none;color:inherit"><div class="n">③</div><div class="t">闯关 · 测试</div><div class="s sw">Changamoto · Majaribio · Word path · tests</div><p style="font-size:14px;margin:6px 0 0"><span class="tri"><span class="zh">HSK 1–5 全部 2500 词闯关（间隔重复）、分级测试、HSK 1–5 自测（按官方题型）、本机真题库（试卷 PDF + 听力 + 答案）。</span><span class="sw">Changamoto ya maneno 2500, jaribio la kiwango, majaribio ya HSK 1–5, mitihani halisi iliyopita kwenye kifaa.</span><span class="en">2500-word path, placement test, HSK 1–5 self-tests, local past papers.</span></span></p></a><a class="tile" href="f2-review.html" style="text-decoration:none;color:inherit"><div class="n">F2</div><div class="t">Form II 备考</div><div class="s sw">Maandalizi ya Kidato cha Pili · Form II revision</div><p style="font-size:14px;margin:6px 0 0"><span class="tri"><span class="zh">三周计划（9月28日–10月16日，10月19日考试）、总复习、五节复习课、8 单元练习、6 个技能模块、三套模拟卷、进度。</span><span class="sw">Mpango wa wiki tatu (28 Sep–16 Okt, mtihani 19 Okt), muhtasari, vipindi 5, mazoezi ya vipengele 8, moduli 6, mitihani 3 ya majaribio, maendeleo.</span><span class="en">Three-week plan, summary, 5 lessons, 8 units, 6 skill modules, 3 mocks, progress.</span></span></p></a><a class="tile" href="f4-review.html" style="text-decoration:none;color:inherit"><div class="n">F4</div><div class="t">Form IV CSEE 总复习</div><div class="s sw">Marudio ya CSEE Kidato cha Nne · Form IV CSEE revision</div><p style="font-size:14px;margin:6px 0 0"><span class="tri"><span class="zh">五周计划、四个学年总复习+学年测试、32 单元复习、十次专题课、技能模块、五套递进模拟卷、进度。</span><span class="sw">Mpango wa wiki tano, muhtasari wa miaka minne na majaribio, vipengele 32, vipindi maalum 10, moduli, mitihani 5 ya majaribio.</span><span class="en">Five-week plan, 4 year summaries and tests, 32 units, 10 sessions, modules, 5 mocks.</span></span></p></a><a class="tile" href="teach-f1-f3-primary.html" style="text-decoration:none;color:inherit"><div class="n">📚</div><div class="t">F1 · F3 · 小学 教学网站</div><div class="s sw">Tovuti ya kufundishia F1 · F3 · Msingi · Teaching site F1 · F3 · Primary</div><p style="font-size:14px;margin:6px 0 0"><span class="tri"><span class="zh">小学 Std III–VI（24 单元，含儿歌和家长信）、Form I、Form III（各 8 单元 + 上周 v1.6 单元）：教案计时器、课堂练习、家庭作业、达标测试、水平测试、教学进度表、全班成绩。</span><span class="sw">Msingi Std III–VI (vipengele 24, nyimbo na barua kwa wazazi), Kidato I na III (vipengele 8 kila kimoja + vya v1.6): mipango ya vipindi, mazoezi, kazi ya nyumbani, majaribio, ratiba, alama.</span><span class="en">Primary Std III–VI, Form I and III: timed lesson plans, classwork, homework, tests, tracker, class scores.</span></span></p></a></div>
+<div class="card"><h2>⚙ <span class="tri"><span class="zh">怎样使用</span><span class="sw">Jinsi ya kutumia</span><span class="en">How to use</span></span></h2><ol>
+<li><span class="tri"><span class="zh">整个「SAY-AI-Lab-汉语」文件夹必须放在「中文乐园」文件夹里面，页面才能播放本地视频、课本录音和真题。复制到实验室电脑时，复制整个「中文乐园」。</span><span class="sw">Folda nzima 'SAY-AI-Lab-汉语' lazima ikae ndani ya folda '中文乐园' ili kurasa zicheze video, sauti za vitabu na mitihani halisi. Unaponakili kwenye kompyuta za maabara, nakili '中文乐园' yote.</span><span class="en">Keep this folder inside 中文乐园 so pages can reach the local videos, textbook audio and past papers.</span></span></li>
+<li><span class="tri"><span class="zh">读音：有录音的词句（audio 文件夹，上周资源包的 2,893 段合成录音）先播放录音；其余用本机的中文语音。iPad/电脑没有中文语音时，在「设置」里看安装方法。所有录音都是合成语音，不能代替老师示范。</span><span class="sw">Matamshi: maneno yenye rekodi (folda audio, rekodi 2,893 za sauti bandia) yanachezwa kwanza; mengine yanatumia sauti ya Kichina ya kifaa. Rekodi zote ni sauti bandia — hazichukui nafasi ya mwalimu.</span><span class="en">Audio: recorded clips (2,893 synthetic clips) first, otherwise the device's Chinese voice. Synthetic, not a substitute for the teacher's model.</span></span></li>
+<li><span class="tri"><span class="zh">笔顺：1,948 个常用字的笔顺数据在 hanzi 文件夹里，离线可用；少见字联网时自动下载。</span><span class="sw">Mpangilio wa mistari: data ya herufi 1,948 iko kwenye folda hanzi, bila mtandao.</span><span class="en">Stroke data for 1,948 characters is in the hanzi folder, offline.</span></span></li>
+<li><span class="tri"><span class="zh">学生用学号登记（例如 F2-07），不写名字。成绩保存在这台设备的浏览器里；老师在「进度」页导出 JSON/CSV，再在老师的电脑上导入合并。</span><span class="sw">Wanafunzi wanajisajili kwa namba (k.m. F2-07), si jina. Alama zinahifadhiwa kwenye kivinjari cha kifaa hiki; mwalimu anahamisha JSON/CSV na kuziingiza kwenye kompyuta yake.</span><span class="en">Learners use codes, never names. Scores stay in this browser; teachers export and merge.</span></span></li>
+<li><span class="tri"><span class="zh">AI 老师：写作题有「AI 老师批改」按钮。老师在「设置」里填 API key 后联网使用；没有 key 时按范文和评分要点自查。AI 生成或批改的内容，发给学生前必须由老师检查。</span><span class="sw">Mwalimu AI: maswali ya kuandika yana kitufe cha AI. Mwalimu aweke API key kwenye Mipangilio; bila key, jisahihishe kwa mfano na vigezo. Maudhui ya AI yakaguliwe na mwalimu kwanza.</span><span class="en">AI coach needs a teacher's API key; otherwise self-check with the model and rubric. Teachers check all AI output first.</span></span></li>
+<li><span class="tri"><span class="zh">HSK 版本：内容按 HSK 2.0（1–6 级）编写，与你的教材和真题一致；HSK 3.0（9 级）大纲已公布，但 2026 年的常规考试仍用 HSK 2.0，报名前向考点确认。</span><span class="sw">Toleo la HSK: maudhui yanafuata HSK 2.0 (viwango 1–6), sawa na vitabu na mitihani yako. Mtaala wa HSK 3.0 umetangazwa, lakini mitihani ya kawaida ya 2026 bado ni HSK 2.0 — thibitisha na kituo cha mtihani.</span><span class="en">Content follows HSK 2.0, matching your books and past papers; regular 2026 tests still use HSK 2.0 — confirm with your test centre.</span></span></li>
+</ol></div>
+<div class="card muted"><span class="tri"><span class="zh">Form IV 汉语大纲表格未公开，F4 内容为 SAY AI Lab 的暂定进度；CSEE 考试格式以 NECTA 为准。小学汉语为 SAY AI Lab 自编进度，不是官方大纲。所有课文和练习为原创；本地教材、视频和真题只在本机链接，不随网页分发。</span><span class="sw">Jedwali la Kidato cha Nne halijachapishwa; maudhui ya F4 ni mpangilio wa muda wa SAY AI Lab. Kichina cha msingi ni mpangilio wa SAY AI Lab, si mtaala rasmi. Masomo na mazoezi yote ni mapya; vitabu, video na mitihani ya ndani vinaunganishwa kwenye kifaa hiki tu.</span><span class="en">Form IV is provisional; primary is SAY AI Lab's own progression. All texts and exercises are original; local books, videos and papers are only linked on this computer.</span></span><br>SAY Foundation · SAY AI Lab</div>
+</main></body></html>
