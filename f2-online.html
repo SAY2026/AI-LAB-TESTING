@@ -81,7 +81,7 @@ body.teacher .tonly{display:revert}
 </style>
 </head>
 <body>
-<header><h1>F2 汉语冲刺 · Form II Chinese Revision</h1><div class="sub">Donga · Jendele · Kiponda — exam 19 Oct 2026 · SAY Foundation · SAY AI Lab</div></header>
+<header><h1>F2 汉语冲刺 · Form II Chinese Revision</h1><div class="sub">Donga · Jendele · Kiponda — exam 12 Oct 2026 · SAY Foundation · SAY AI Lab</div></header>
 <nav id="nav"></nav>
 <div class="bar noprint">
  <span id="who"></span>
@@ -329,7 +329,7 @@ function vPlan(){
  [{zh:"第三次 · 模拟考试 + 后测",en:"Session 3 · Mock exam + POST",sw:"Kipindi 3 · Mtihani wa majaribio + BAADA"},[
   ["0–90","模拟卷四：全卷 100 分，按考试日规则；第一至五部分自动评分","Mock 4: full 100-mark paper under exam-day rules; Sections I–V auto-marked","Mtihani wa majaribio 4: karatasi kamili ya alama 100 kwa kanuni za siku ya mtihani; Sehemu I–V husahihishwa zenyewe"],
   ["+5","交卷后马上做后测问卷；老师批改写作（0–8 分）并导出成绩","POST questionnaire right after submitting; teacher marks the writing (0–8) and exports results","Dodoso la BAADA mara baada ya kuwasilisha; mwalimu anasahihisha kuandika (0–8) na kupakua matokeo"]]]];
- var h='<h2>'+esc(t("plan"))+' '+printBtn()+'</h2><div class="card mut">'+{zh:"三所学校共 115 人：Donga 86、Jendele 10、Kiponda 19。每次 90 分钟。设备不够时：全班看投影 + 打印纸；有 iPad/电脑的学生自己做。",en:"115 students in three schools: Donga 86, Jendele 10, Kiponda 19. Each session is 90 minutes. Where devices are short: whole class from the projector plus printed sheets; students with an iPad or laptop work on their own.",sw:"Wanafunzi 115 katika shule tatu: Donga 86, Jendele 10, Kiponda 19. Kila kipindi ni dakika 90. Vifaa vikiwa vichache: darasa zima kwa projekta na karatasi; wenye iPad au kompyuta wanafanya wenyewe."}[S.lang]+'</div>';
+ var h='<h2>'+esc(t("plan"))+' '+printBtn()+'</h2><div class="card mut">'+{zh:"考试提前到 10 月 12 日：三次课请排在 10 月 5–9 日这一周，模拟考试最晚在 10 月 9 日。三所学校共 115 人：Donga 86、Jendele 10、Kiponda 19。每次 90 分钟。设备不够时：全班看投影 + 打印纸；有 iPad/电脑的学生自己做。",en:"The exam has moved to 12 October: hold the three sessions in the week of 5–9 October, with the mock no later than 9 October. 115 students in three schools: Donga 86, Jendele 10, Kiponda 19. Each session is 90 minutes. Where devices are short: whole class from the projector plus printed sheets; students with an iPad or laptop work on their own.",sw:"Mtihani umehamishwa hadi tarehe 12 Oktoba: fanya vipindi vitatu katika wiki ya 5–9 Oktoba, na mtihani wa majaribio usizidi tarehe 9 Oktoba. Wanafunzi 115 katika shule tatu: Donga 86, Jendele 10, Kiponda 19. Kila kipindi ni dakika 90. Vifaa vikiwa vichache: darasa zima kwa projekta na karatasi; wenye iPad au kompyuta wanafanya wenyewe."}[S.lang]+'</div>';
  P.forEach(function(s){h+='<div class="card"><h3 style="margin-top:0">'+esc(L(s[0]))+'</h3><div class="tw"><table><tr><th style="width:70px">min</th><th></th></tr>'+s[1].map(function(r){return '<tr><td>'+r[0]+'</td><td>'+esc(r[1+LI[S.lang]])+'</td></tr>'}).join("")+'</table></div></div>'});
  return h;
 }

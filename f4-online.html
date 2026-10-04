@@ -81,7 +81,7 @@ body.teacher .tonly{display:revert}
 </style>
 </head>
 <body>
-<header><h1>F4 CSEE 汉语冲刺 · Form IV Chinese Revision</h1><div class="sub">Kiponda · Jendele — CSEE 026 Chinese Language · confirm the exam date with your school · SAY Foundation · SAY AI Lab</div></header>
+<header><h1>F4 CSEE 汉语冲刺 · Form IV Chinese Revision</h1><div class="sub">Kiponda · Jendele — CSEE 026 Chinese Language · CSEE exams begin 19 Oct 2026 · SAY Foundation · SAY AI Lab</div></header>
 <nav id="nav"></nav>
 <div class="bar noprint">
  <span id="who"></span>
@@ -195,7 +195,7 @@ function vPlan(){
  ["5","中四（下）+ 写作","Form IV (2) + writing","Kidato cha IV (2) + kuandika","翻译、便条和通知、综合阅读；单元练习 F4U5–F4U8；写两篇短文，老师批改","Translation, notes and notices, reading; unit practice F4U5–F4U8; write two short compositions for the teacher to mark","Tafsiri, ujumbe na matangazo, kusoma; mazoezi F4U5–F4U8; andika insha fupi mbili, mwalimu asahihishe"],
  ["6","模拟考试 + 后测","Mock exam + POST","Mtihani wa majaribio + BAADA","按正式考试的时间和规则考一套模拟卷；讲评最常错的五题；后测问卷","One mock paper under the real time and rules; go over the five most-missed items; POST questionnaire","Mtihani mmoja wa majaribio kwa muda na kanuni halisi; pitia maswali matano yaliyokosewa zaidi; dodoso la BAADA"]];
  var k=LI[S.lang];
- return '<h2>'+esc(t("plan"))+' '+printBtn()+'</h2><div class="card mut">'+{zh:"两所学校共 29 人：Kiponda 19、Jendele 10。六次课，每次 90 分钟。考试日期请先向学校确认，再把六次课排进考前的几周，模拟考试至少在考前三天。",en:"29 students in two schools: Kiponda 19, Jendele 10. Six sessions of 90 minutes. Confirm the exam date with the school first, then fit the six sessions into the weeks before it, with the mock at least three days before the exam.",sw:"Wanafunzi 29 katika shule mbili: Kiponda 19, Jendele 10. Vipindi sita vya dakika 90. Thibitisha tarehe ya mtihani na shule kwanza, kisha panga vipindi sita katika wiki zilizobaki; mtihani wa majaribio uwe angalau siku tatu kabla."}[S.lang]+'</div><div class="card"><div class="tw"><table><tr><th>#</th><th></th><th></th></tr>'+P.map(function(r){return '<tr><td>'+r[0]+'</td><td><b>'+esc(r[1+k])+'</b></td><td>'+esc(r[4+k])+'</td></tr>'}).join("")+'</table></div></div>';
+ return '<h2>'+esc(t("plan"))+' '+printBtn()+'</h2><div class="card mut">'+{zh:"两所学校共 29 人：Kiponda 19、Jendele 10。六次课，每次 90 分钟。CSEE 考试 10 月 19 日开始（汉语科目的具体日期请看学校的考试时间表）。六次课排在 10 月 5–16 日这两周，每周三次，模拟考试最晚在 10 月 15 日。",en:"29 students in two schools: Kiponda 19, Jendele 10. Six sessions of 90 minutes. The CSEE exams begin on 19 October (check the school timetable for the day of the Chinese paper). Hold the six sessions in the two weeks of 5–16 October, three a week, with the mock no later than 15 October.",sw:"Wanafunzi 29 katika shule mbili: Kiponda 19, Jendele 10. Vipindi sita vya dakika 90. Mitihani ya CSEE inaanza tarehe 19 Oktoba (angalia ratiba ya shule kwa siku ya karatasi ya Kichina). Fanya vipindi sita katika wiki mbili za 5–16 Oktoba, vitatu kila wiki; mtihani wa majaribio usizidi tarehe 15 Oktoba."}[S.lang]+'</div><div class="card"><div class="tw"><table><tr><th>#</th><th></th><th></th></tr>'+P.map(function(r){return '<tr><td>'+r[0]+'</td><td><b>'+esc(r[1+k])+'</b></td><td>'+esc(r[4+k])+'</td></tr>'}).join("")+'</table></div></div>';
 }
 function formBar(){return '<div class="row noprint" style="margin-bottom:10px">'+[1,2,3,4].map(function(f){return '<button class="btn '+(FORM===f?"":"sec")+' sm" data-act="form" data-f="'+f+'">Form '+["I","II","III","IV"][f-1]+'</button>'}).join("")+'</div>'}
 function vReview(){
