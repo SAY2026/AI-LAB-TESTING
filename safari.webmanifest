@@ -1,0 +1,16 @@
+{
+  "name": "Safari ya Kichina · 汉语之旅",
+  "short_name": "Kichina",
+  "description": "Jifunze Kichina kutoka sifuri · Learn Chinese from zero · SAY AI Lab",
+  "lang": "sw",
+  "start_url": "./safari-ya-kichina.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fbf5e9",
+  "theme_color": "#0a6b74",
+  "icons": [
+    {"src": "safari-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "safari-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

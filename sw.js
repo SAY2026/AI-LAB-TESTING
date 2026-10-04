@@ -1,0 +1,19 @@
+/* SAY AI Lab offline cache. Bump VERSION whenever the pages change. */
+var VERSION = "say-v1";
+var ASSETS = ["safari-ya-kichina.html", "safari.webmanifest", "safari-icon-192.png", "safari-icon-512.png", "safari-icon-180.png", "f2-online.html", "f4-online.html"];
+self.addEventListener("install", function (e) {
+  e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(ASSETS); }).then(function () { return self.skipWaiting(); }));
+});
+self.addEventListener("activate", function (e) {
+  e.waitUntil(caches.keys().then(function (ks) { return Promise.all(ks.filter(function (k) { return k !== VERSION; }).map(function (k) { return caches.delete(k); })); }).then(function () { return self.clients.claim(); }));
+});
+/* Network first, so updates arrive when online; the cached copy is used when offline. Other pages of the site are left alone. */
+self.addEventListener("fetch", function (e) {
+  var u = new URL(e.request.url);
+  if (e.request.method !== "GET" || u.origin !== location.origin) return;
+  if (!ASSETS.some(function (a) { return u.pathname.endsWith("/" + a); })) return;
+  e.respondWith(fetch(e.request).then(function (r) {
+    if (r && r.ok) { var copy = r.clone(); caches.open(VERSION).then(function (c) { c.put(e.request, copy); }); }
+    return r;
+  }).catch(function () { return caches.match(e.request, { ignoreSearch: true }); }));
+});

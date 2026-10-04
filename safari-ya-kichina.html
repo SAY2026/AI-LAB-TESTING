@@ -7,6 +7,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0a6b74">
+<meta name="apple-mobile-web-app-title" content="Kichina">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="safari.webmanifest">
+<link rel="icon" href="safari-icon-192.png">
+<link rel="apple-touch-icon" href="safari-icon-180.png">
 <title>Safari ya Kichina · 汉语之旅</title>
 <style>
 :root{--sea:#0a6b74;--sea2:#0e8b96;--foam:#e3f3f2;--sand:#fbf5e9;--card:#fff;--ink:#17222b;--mut:#62707c;--line:#e2dccc;--gold:#e8a317;--coral:#e2553d;--leaf:#2b9a57;--lock:#c9c5ba}
@@ -143,7 +148,7 @@ var PIN="2026";
 var TX={
 app:["Safari ya Kichina","Chinese Journey","汉语之旅"],sub:["汉语之旅 · SAY AI Lab","汉语之旅 · SAY AI Lab","Safari ya Kichina · SAY AI Lab"],
 who:["Nani anajifunza?","Who is learning?","谁在学习？"],newp:["Mwanafunzi mpya","New learner","新学员"],code:["Namba yako (si jina)","Your code (not your name)","你的编号（不写名字）"],school:["Shule au kituo","School or centre","学校或中心"],
-role:["Mimi ni","I am a","我是"],r1:["mwanafunzi","student","学生"],r2:["mwalimu","teacher","老师"],start:["Anza","Start","开始"],pname:["Jina lako (walimu tu)","Your name (teachers only)","姓名（仅老师填写）"],pmail:["Barua pepe (walimu tu, si lazima)","Email (teachers only, optional)","邮箱（仅老师，可不填）"],pick:["Chagua picha","Choose a picture","选一个头像"],
+role:["Mimi ni","I am a","我是"],r1:["mwanafunzi","student","学生"],r2:["mwalimu","teacher","老师"],start:["Anza","Start","开始"],inst:["Sakinisha","Install","安装"],instHow:["iPad / iPhone: bonyeza kitufe cha Kushiriki (mraba wenye mshale), kisha ‘Add to Home Screen’. Android / Chrome: bonyeza menyu ⋮, kisha ‘Install app’ au ‘Add to Home screen’. Kompyuta: bonyeza alama ya kusakinisha kwenye upau wa anwani.","iPad / iPhone: tap the Share button (the square with an arrow), then ‘Add to Home Screen’. Android / Chrome: tap the ⋮ menu, then ‘Install app’ or ‘Add to Home screen’. Computer: click the install icon in the address bar.","iPad / iPhone：点“分享”按钮（带箭头的方框），再点“添加到主屏幕”。安卓 / Chrome：点 ⋮ 菜单，再点“安装应用”或“添加到主屏幕”。电脑：点地址栏里的安装图标。"],offOk:["Iko tayari kutumika bila mtandao","Ready to use offline","已可离线使用"],offNo:["Fungua ukurasa huu mara moja ukiwa na mtandao ili utumike bila mtandao baadaye","Open this page once with internet so it works offline later","联网打开一次本页，之后就能离线使用"],pname:["Jina lako (walimu tu)","Your name (teachers only)","姓名（仅老师填写）"],pmail:["Barua pepe (walimu tu, si lazima)","Email (teachers only, optional)","邮箱（仅老师，可不填）"],pick:["Chagua picha","Choose a picture","选一个头像"],
 cont:["ENDELEA","CONTINUE","继续"],check:["ANGALIA","CHECK","检查"],skip:["Ruka","Skip","跳过"],right:["Sahihi! 🎉","Correct! 🎉","对了！🎉"],wrong:["Jibu sahihi:","Correct answer:","正确答案："],
 neww:["Neno jipya","New word","新词"],qMean:["Neno hili lina maana gani?","What does this mean?","这个词是什么意思？"],qHz:["Chagua neno la Kichina","Choose the Chinese word","选出汉语词"],qListen:["Sikiliza, kisha chagua","Listen, then choose","听一听，再选择"],qPy:["Chagua pinyin sahihi","Choose the correct pinyin","选出正确的拼音"],qMatch:["Oanisha","Match the pairs","配对"],qBuild:["Tunga sentensi hii kwa Kichina","Build this sentence in Chinese","用汉语拼出这句话"],qWrite:["Andika herufi hii kwa kidole au kipanya","Write this character with your finger or mouse","用手指或鼠标写这个字"],
 lesson:["Somo","Lesson","第"],sents:["Sentensi","Sentences","句子"],review:["Marudio ya maneno magumu","Review your hard words","复习难词"],noweak:["Hakuna maneno magumu bado. Endelea na masomo!","No hard words yet. Keep learning!","还没有难词，继续学习吧！"],
@@ -199,7 +204,7 @@ function streak(p){return p.last===today()||p.last===yesterday()?p.streak:0}
 function yesterday(){var d=new Date(Date.now()-864e5);return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
 function vPath(){
  var p=P(),h=hdr('<span class="pill">🔥 '+streak(p)+'</span><span class="pill">⭐ '+p.xp+'</span><button class="pill" data-act="menu">'+p.av+'</button>')+'<main>';
- if(V.menu)h+='<div class="card"><div class="row"><b>'+p.av+' '+esc(p.code)+'</b> '+langSel()+'</div><div style="height:10px"></div><div class="row"><button class="btn sec sm" data-act="switch">'+esc(t("switchp"))+'</button><button class="btn sec sm" data-act="pytog">Pinyin '+(SET.py!==false?"✓":"✗")+'</button><button class="btn sec sm" data-act="teach">'+esc(t("teacher"))+(TEACH?" ✓":"")+'</button></div></div>';
+ if(V.menu)h+='<div class="card"><div class="row"><b>'+p.av+' '+esc(p.code)+'</b> '+langSel()+'</div><div style="height:10px"></div><div class="row"><button class="btn sec sm" data-act="switch">'+esc(t("switchp"))+'</button><button class="btn sec sm" data-act="install">📲 '+esc(t("inst"))+'</button><button class="btn sec sm" data-act="pytog">Pinyin '+(SET.py!==false?"✓":"✗")+'</button><button class="btn sec sm" data-act="teach">'+esc(t("teacher"))+(TEACH?" ✓":"")+'</button></div>'+(V.inst?'<div class="note" style="margin-top:10px">'+esc(t("instHow"))+'</div>':"")+'<div class="mut" style="margin-top:8px">'+(OFFLINE_OK?"✓ "+esc(t("offOk")):esc(t("offNo")))+'</div></div>';
  h+='<button class="btn gold" data-act="review">🔁 '+esc(t("review"))+'</button>';
  COURSE.forEach(function(l){
   h+='<div class="lvl"><b>'+esc(L(l.t))+'</b><div>'+esc(L(l.d))+'</div></div><div class="path">';
@@ -290,6 +295,7 @@ document.addEventListener("click",function(e){
  else if(a==="newp"){var code=$("#pc").value.trim();if(!code){$("#pc").focus();return}var id=($("#ps").value.trim()||"-")+"/"+code;if(!PROFS[id])PROFS[id]={code:code,school:$("#ps").value.trim(),role:$("#pr").value,name:$("#pr").value==="t"?$("#pn").value.trim():"",email:$("#pr").value==="t"?$("#pe").value.trim():"",av:V.av||AV[0],xp:0,streak:0,last:"",done:{},weak:{},log:[]};CURID=id;saveP();sset("hs:cur",CURID);V={name:"path"};render()}
  else if(a==="pick"){CURID=el.dataset.id;sset("hs:cur",CURID);V={name:"path"};render()}
  else if(a==="switch"){CURID=null;sset("hs:cur",null);TEACH=false;V={name:"path"};render()}
+ else if(a==="install"){if(DEFER){DEFER.prompt();DEFER=null}else{V.inst=!V.inst;render()}}
  else if(a==="pytog"){SET.py=SET.py===false;sset("hs:set",SET);render()}
  else if(a==="menu"){V.menu=!V.menu;render()}
  else if(a==="teach"){if(!TEACH){var pin=window.prompt("PIN");if(pin!==PIN)return;TEACH=true}V={name:"teacher"};render()}
@@ -319,6 +325,9 @@ document.addEventListener("change",function(e){
  if(e.target.id==="lang"){SET.lang=e.target.value;sset("hs:set",SET);document.documentElement.lang=SET.lang;render()}
  if(e.target.id==="impf"&&e.target.files[0]){var fr=new FileReader();fr.onload=function(){try{var d=JSON.parse(String(fr.result).replace(/^﻿/,""));for(var k in d)CUSTOM[k]=d[k];PYMAP=null;sset("hs:custom",CUSTOM);applyCustom();toast("✓ "+Object.keys(d).length+" units");render()}catch(x){toast("JSON ✗")}};fr.readAsText(e.target.files[0])}
 });
+var DEFER=null,OFFLINE_OK=false;
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();DEFER=e});
+if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){navigator.serviceWorker.register("sw.js").then(function(){return navigator.serviceWorker.ready}).then(function(){OFFLINE_OK=true;if(V.name==="path"&&V.menu)render()}).catch(function(){})}
 function toast(m){var b=document.createElement("div");b.className="card";b.style.cssText="position:fixed;left:14px;right:14px;bottom:14px;z-index:9;text-align:center;border-color:var(--gold)";b.textContent=m;document.body.appendChild(b);setTimeout(function(){b.remove()},2200)}
 render();
 </script>
