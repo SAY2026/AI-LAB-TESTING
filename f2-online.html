@@ -94,7 +94,7 @@ body.teacher .tonly{display:revert}
 <script>
 "use strict";
 /* ================= DATA ================= */
-var SCHOOLS=[["Donga",86],["Jendele",10],["Kiponda",19]];
+var SCHOOLS=[["Donga",20],["Jendele",33],["Kiponda",8]];
 var TEACHER_PIN="2026";
 var VOCAB=[
 "家与家里的东西|Home and things at home|Nyumbani na vitu vya nyumbani::房间|fángjiān|room|chumba;客厅|kètīng|living room|sebule;厨房|chúfáng|kitchen|jiko;床|chuáng|bed|kitanda;电视|diànshì|TV|televisheni;手机|shǒujī|mobile phone|simu ya mkononi;电脑|diànnǎo|computer|kompyuta;杯子|bēizi|cup|kikombe;干净|gānjìng|clean|safi",
@@ -162,7 +162,30 @@ var DIAG=[
 {u:8,q:"我___说汉语。(a learned skill / ujuzi uliojifunza)",o:["会","在","是","有"],a:0},
 {u:8,q:"A note (便条) begins with / Ujumbe mfupi huanza na:",o:["your own name","the reader's name + ：","the date","再见"],a:1}];
 
-/* Mock 4: full paper, 90 min, 100 marks */
+/* Diagnostic Form B: parallel to Form A, same unit blueprint. Odd codes sit A first and B at the end; even codes the reverse. */
+var DIAGB=[
+{u:1,q:"Pinyin: 朋友",o:["péngyǒu","péngyou","pěngyou","pèngyou"],a:1},
+{u:1,q:"Pinyin (as written): 很好",o:["hén hǎo","hěn hào","hěn hǎo","hèn hǎo"],a:2},
+{u:2,q:"我的房间___干净。",o:["是","很","有","在"],a:1},
+{u:2,q:"手机在床___。",o:["上","从","往","离"],a:0},
+{u:2,q:"kitchen / jiko =",o:["客厅","房间","厨房","床"],a:2},
+{u:3,q:"3:15 =",o:["三点半","三点一刻","三刻一点","三点十五分钟"],a:1},
+{u:3,q:"现在___点？",o:["什么","几","多少钱","哪儿"],a:1},
+{u:3,q:"两点半 =",o:["2:15","12:30","2:03","2:30"],a:3},
+{u:4,q:"我先洗脸，然后吃早饭，___去学校。",o:["以前","最后","现在","先"],a:1},
+{u:4,q:"放学___我帮妈妈做饭。",o:["以后","然后","先","再"],a:0},
+{u:4,q:"homework / kazi ya nyumbani =",o:["休息","打扫","作业","洗脸"],a:2},
+{u:5,q:"他___中国来。",o:["在","从","往","离"],a:1},
+{u:5,q:"往前走，往左___。",o:["到","来","拐","离"],a:2},
+{u:5,q:"从我家___学校走十分钟。",o:["到","在","往","离"],a:0},
+{u:6,q:"老师，我可以出去___？",o:["吧","吗","呢","的"],a:1},
+{u:6,q:"你能不能___我一支笔？",o:["等","发","借","帮"],a:2},
+{u:7,q:"在吗？ =",o:["got it","are you there? / upo?","see you tomorrow","sorry"],a:1},
+{u:7,q:"请___照片给我。",o:["发","借","等","拐"],a:0},
+{u:8,q:"老师，我___进来吗？(permission / ruhusa)",o:["是","有","可以","很"],a:2},
+{u:8,q:"A note (便条) ends with / Ujumbe mfupi huishia na:",o:["the reader's name","your own name / jina lako","the date only","你好"],a:1}];
+function formOf(r,wave){var d=String(r.id).replace(/\D/g,""),n=d?+d.slice(-1):String(r.id).split("").reduce(function(a,c){return a+c.charCodeAt(0)},0),first=n%2?"A":"B";return wave==="pre"?first:(first==="A"?"B":"A")}
+/* Mock 4: full paper 90 min / 100 marks, or short version 40 min / 60 marks */
 var MOCK=[
 {id:"I",marks:2,name:{zh:"第一部分 听力（20 分）",en:"Section I · Listening (20 marks)",sw:"Sehemu I · Kusikiliza (alama 20)"},
  inst:{zh:"每题听两遍，选出正确答案。先读四个选项。",en:"Each item is heard twice. Read the four options first, then choose.",sw:"Kila swali husikika mara mbili. Soma majibu manne kwanza, kisha chagua."},
@@ -255,7 +278,7 @@ var OPENQ=[["change","这三次复习以后，你学汉语的方法有什么变�
 
 /* UI strings */
 var UI={
-home:["开始","Start","Anza"],plan:["三次课方案","3-session plan","Mpango wa vipindi 3"],review:["复习","Revision","Marudio"],diag:["水平测试","Diagnostic","Jaribio la kiwango"],mock:["模拟考试","Mock exam","Mtihani wa majaribio"],survey:["问卷","Questionnaire","Dodoso"],results:["成绩（老师）","Results (teacher)","Matokeo (mwalimu)"],
+home:["开始","Start","Anza"],plan:["三小时集训方案","3-hour session plan","Mpango wa kipindi cha saa 3"],review:["复习","Revision","Marudio"],diag:["水平测试","Diagnostic","Jaribio la kiwango"],mock:["模拟考试","Mock exam","Mtihani wa majaribio"],survey:["问卷","Questionnaire","Dodoso"],results:["成绩（老师）","Results (teacher)","Matokeo (mwalimu)"],
 mean:["释义","meanings","maana"],teacherOn:["老师模式：开","Teacher mode: ON","Hali ya mwalimu: IMEWASHWA"],teacherOff:["老师模式","Teacher mode","Hali ya mwalimu"],
 print:["🖨 打印","🖨 Print","🖨 Chapisha"],submit:["交卷","Submit","Wasilisha"],save:["保存","Save","Hifadhi"],saved:["已保存 ✓","Saved ✓","Imehifadhiwa ✓"],
 school:["学校","School","Shule"],sid:["学生编号（不写名字）","Student code (no names)","Namba ya mwanafunzi (bila jina)"],mode:["学习方式","How you study here","Unavyojifunza hapa"],
@@ -263,7 +286,7 @@ m1:["自己用 iPad / 电脑","own iPad / laptop","iPad / kompyuta yangu"],m2:["
 signin:["登记后开始","Sign in to start","Jisajili ili kuanza"],change:["换学生","Switch student","Badilisha mwanafunzi"],need:["请先在“开始”页登记学校和编号。","Please sign in on the Start page first.","Tafadhali jisajili kwanza kwenye ukurasa wa Anza."],
 score:["得分","Score","Alama"],redo:["重做","Try again","Jaribu tena"],wrongNote:["红框是错题。先自己找出正确答案，再重做。","Items in red are wrong. Find the right answer yourself, then try again.","Maswali yenye rangi nyekundu si sahihi. Tafuta jibu sahihi mwenyewe, kisha jaribu tena."],
 play:["▶ 播放两遍","▶ Play twice","▶ Cheza mara mbili"],novoice:["这台设备不能朗读中文，请老师读。","This device cannot read Chinese aloud — the teacher reads the script.","Kifaa hiki hakiwezi kusoma Kichina — mwalimu atasoma."],
-startT:["开始计时 90 分钟","Start the 90-minute timer","Anza saa ya dakika 90"],pre:["前测","PRE","KABLA"],post:["后测","POST","BAADA"],
+startT:["开始计时","Start the timer","Anza saa"],short:["短卷 40 分钟 · 60 分","Short paper · 40 min · 60 marks","Karatasi fupi · dakika 40 · alama 60"],full:["全卷 90 分钟 · 100 分","Full paper · 90 min · 100 marks","Karatasi kamili · dakika 90 · alama 100"],pre:["前测","PRE","KABLA"],post:["后测","POST","BAADA"],
 quiz:["小测","Quiz me","Nijaribu"],vocab:["词汇（8 组 · 88 个）","Vocabulary (8 groups · 88 words)","Msamiati (makundi 8 · maneno 88)"],pat:["12 个重点句型","12 key patterns","Miundo 12 muhimu"],gram:["9 条语法","9 grammar points","Hoja 9 za sarufi"],mist:["5 个常见错误","5 common mistakes","Makosa 5 ya kawaida"],note:["便条","The note","Ujumbe mfupi"],
 key:["答案（老师）","Answer key (teacher)","Majibu (mwalimu)"],script:["听力原文","Listening script","Maandishi ya kusikiliza"],wmark:["写作得分（老师填 0–8）","Writing mark (teacher, 0–8)","Alama ya kuandika (mwalimu, 0–8)"],
 unit:["单元","Unit","Kipindi"],weak:["最弱的单元","Weakest units","Vipindi dhaifu zaidi"],done:["已完成","done","imekamilika"]};
@@ -313,27 +336,23 @@ function vHome(){
  '<label>'+esc(t("mode"))+'<br><select id="fmode">'+["m1","m2","m3"].map(function(m){return '<option value="'+m+'"'+(CUR&&CUR.mode===m?" selected":"")+'>'+esc(t(m))+'</option>'}).join("")+'</select></label>'+
  '<button class="btn" data-act="signin">'+esc(t("home"))+' →</button></div></div>';
  var r=rec();
- if(r){h+='<div class="card"><b>'+esc(CUR.school+" · "+CUR.id)+'</b><div class="tw"><table><tr><th>'+esc(t("survey")+" "+t("pre"))+'</th><th>'+esc(t("diag"))+'</th><th>'+esc(t("mock"))+'</th><th>'+esc(t("survey")+" "+t("post"))+'</th></tr><tr><td>'+(r.pre?"✓":"—")+'</td><td>'+(r.diag?r.diag.score+" / 20":"—")+'</td><td>'+(r.mock?r.mock.auto+" / 92"+(r.mock.wmark!=null?" + "+r.mock.wmark+" / 8":""):"—")+'</td><td>'+(r.post?"✓":"—")+'</td></tr></table></div></div>'}
- h+='<div class="card mut">'+{zh:"顺序：① 前测问卷 → ② 水平测试 → ③ 复习 → ④ 模拟考试 → ⑤ 后测问卷。成绩只保存在这台设备上，老师在“成绩”页导出。",en:"Order: ① PRE questionnaire → ② diagnostic → ③ revision → ④ mock exam → ⑤ POST questionnaire. Results are saved on this device only; the teacher exports them from the Results page.",sw:"Mpangilio: ① dodoso la KABLA → ② jaribio la kiwango → ③ marudio → ④ mtihani wa majaribio → ⑤ dodoso la BAADA. Matokeo huhifadhiwa kwenye kifaa hiki tu; mwalimu huyapakua kwenye ukurasa wa Matokeo."}[S.lang]+'</div>';
+ if(r){h+='<div class="card"><b>'+esc(CUR.school+" · "+CUR.id)+'</b><div class="tw"><table><tr><th>'+esc(t("survey")+" "+t("pre"))+'</th><th>'+esc(t("diag"))+'</th><th>'+esc(t("mock"))+'</th><th>'+esc(t("survey")+" "+t("post"))+'</th></tr><tr><td>'+(r.pre?"✓":"—")+'</td><td>'+(r.diag?r.diag.score+" / 20":"—")+" → "+(r.diag2?r.diag2.score+" / 20":"—")+'</td><td>'+(r.mock?r.mock.auto+" / "+(r.mock.max||92)+(r.mock.wmark!=null?" + "+r.mock.wmark+" / 8":""):"—")+'</td><td>'+(r.post?"✓":"—")+'</td></tr></table></div></div>'}
+ h+='<div class="card mut">'+{zh:"顺序：① 前测问卷 → ② 水平测试（前）→ ③ 复习 → ④ 水平测试（后）→ ⑤ 模拟考试 → ⑥ 后测问卷。成绩只保存在这台设备上，老师在“成绩”页导出。",en:"Order: ① PRE questionnaire → ② diagnostic (PRE) → ③ revision → ④ diagnostic (POST) → ⑤ mock exam → ⑥ POST questionnaire. Results are saved on this device only; the teacher exports them from the Results page.",sw:"Mpangilio: ① dodoso la KABLA → ② jaribio la kiwango (KABLA) → ③ marudio → ④ jaribio la kiwango (BAADA) → ⑤ mtihani wa majaribio → ⑥ dodoso la BAADA. Matokeo huhifadhiwa kwenye kifaa hiki tu; mwalimu huyapakua kwenye ukurasa wa Matokeo."}[S.lang]+'</div>';
  return h;
 }
 
 function vPlan(){
- var P=[
- [{zh:"第一次 · 摸底 + 第 1–4 单元",en:"Session 1 · Diagnose + Units 1–4",sw:"Kipindi 1 · Kupima + Vipindi 1–4"},[
-  ["0–8","问卷 前测","Questionnaire PRE","Dodoso KABLA"],["8–30","水平测试 20 题，自动评分，看最弱单元","Diagnostic, 20 items, auto-marked; note the weakest units","Jaribio la kiwango, maswali 20; angalia vipindi dhaifu"],
-  ["30–55","词汇第 1–4 组：听、跟读、小测","Vocabulary groups 1–4: listen, repeat, quiz","Msamiati makundi 1–4: sikiliza, rudia, jaribio"],["55–80","句型 1–7 + 语法 1、2、4、5、6","Patterns 1–7 + grammar 1, 2, 4, 5, 6","Miundo 1–7 + sarufi 1, 2, 4, 5, 6"],["80–90","作业：小测做到 100%；写 5 句《我的家》","Homework: quizzes to 100%; write 5 sentences on 我的家","Kazi ya nyumbani: mazoezi hadi 100%; sentensi 5 za 我的家"]]],
- [{zh:"第二次 · 第 5–8 单元 + 便条",en:"Session 2 · Units 5–8 + the note",sw:"Kipindi 2 · Vipindi 5–8 + ujumbe mfupi"},[
-  ["0–10","上次错题快问快答","Quick-fire on last session's errors","Maswali ya haraka ya makosa ya kipindi kilichopita"],["10–35","词汇第 5–8 组：听、跟读、小测","Vocabulary groups 5–8: listen, repeat, quiz","Msamiati makundi 5–8: sikiliza, rudia, jaribio"],
-  ["35–60","句型 8–12 + 语法 3、7、8、9 + 5 个常见错误","Patterns 8–12 + grammar 3, 7, 8, 9 + the 5 common mistakes","Miundo 8–12 + sarufi 3, 7, 8, 9 + makosa 5 ya kawaida"],["60–80","便条：格式三步，写一张 40 字便条，同桌互查","The note: three-step format, write one 40-character note, check with a neighbour","Ujumbe mfupi: hatua tatu, andika ujumbe wa herufi 40, kaguana na jirani"],["80–90","考试技巧：先读选项；每题都答；带两支笔","Exam skills: read options first; answer every item; bring two pens","Mbinu za mtihani: soma majibu kwanza; jibu kila swali; leta kalamu mbili"]]],
- [{zh:"第三次 · 模拟考试 + 后测",en:"Session 3 · Mock exam + POST",sw:"Kipindi 3 · Mtihani wa majaribio + BAADA"},[
-  ["0–90","模拟卷四：全卷 100 分，按考试日规则；第一至五部分自动评分","Mock 4: full 100-mark paper under exam-day rules; Sections I–V auto-marked","Mtihani wa majaribio 4: karatasi kamili ya alama 100 kwa kanuni za siku ya mtihani; Sehemu I–V husahihishwa zenyewe"],
-  ["+5","交卷后马上做后测问卷；老师批改写作（0–8 分）并导出成绩","POST questionnaire right after submitting; teacher marks the writing (0–8) and exports results","Dodoso la BAADA mara baada ya kuwasilisha; mwalimu anasahihisha kuandika (0–8) na kupakua matokeo"]]]];
- var h='<h2>'+esc(t("plan"))+' '+printBtn()+'</h2><div class="card mut">'+{zh:"考试提前到 10 月 12 日：三次课请排在 10 月 5–9 日这一周，模拟考试最晚在 10 月 9 日。三所学校共 115 人：Donga 86、Jendele 10、Kiponda 19。每次 90 分钟。设备不够时：全班看投影 + 打印纸；有 iPad/电脑的学生自己做。",en:"The exam has moved to 12 October: hold the three sessions in the week of 5–9 October, with the mock no later than 9 October. 115 students in three schools: Donga 86, Jendele 10, Kiponda 19. Each session is 90 minutes. Where devices are short: whole class from the projector plus printed sheets; students with an iPad or laptop work on their own.",sw:"Mtihani umehamishwa hadi tarehe 12 Oktoba: fanya vipindi vitatu katika wiki ya 5–9 Oktoba, na mtihani wa majaribio usizidi tarehe 9 Oktoba. Wanafunzi 115 katika shule tatu: Donga 86, Jendele 10, Kiponda 19. Kila kipindi ni dakika 90. Vifaa vikiwa vichache: darasa zima kwa projekta na karatasi; wenye iPad au kompyuta wanafanya wenyewe."}[S.lang]+'</div>';
- P.forEach(function(s){h+='<div class="card"><h3 style="margin-top:0">'+esc(L(s[0]))+'</h3><div class="tw"><table><tr><th style="width:70px">min</th><th></th></tr>'+s[1].map(function(r){return '<tr><td>'+r[0]+'</td><td>'+esc(r[1+LI[S.lang]])+'</td></tr>'}).join("")+'</table></div></div>'});
- return h;
+ var k=LI[S.lang],P=[
+ ["0–10","登记编号；前测问卷","Sign in with codes; PRE questionnaire","Jisajili kwa namba; dodoso la KABLA","李 Li"],
+ ["10–30","水平测试（前）：20 题，自动评分，看最弱的单元","Diagnostic (PRE): 20 items, auto-marked; note the weakest units","Jaribio la kiwango (KABLA): maswali 20; angalia vipindi dhaifu","李 Li"],
+ ["30–75","复习上：词汇第 1–4 组（听、跟读、小测）；句型 1–7；语法 1、2、4、5、6","Revision A: vocabulary groups 1–4 (listen, repeat, quiz); patterns 1–7; grammar 1, 2, 4, 5, 6","Marudio A: msamiati makundi 1–4 (sikiliza, rudia, jaribio); miundo 1–7; sarufi 1, 2, 4, 5, 6","李 → 老师 Li → teacher"],
+ ["75–90","休息 / 礼拜","Break / prayer","Mapumziko / sala","—"],
+ ["90–120","复习下：词汇第 5–8 组；句型 8–12；5 个常见错误；便条三步","Revision B: vocabulary groups 5–8; patterns 8–12; the 5 common mistakes; the note in three steps","Marudio B: msamiati makundi 5–8; miundo 8–12; makosa 5 ya kawaida; ujumbe mfupi kwa hatua tatu","老师 teacher（李协助 Li assists）"],
+ ["120–135","水平测试（后）：另一套 20 题","Diagnostic (POST): the other 20-item form","Jaribio la kiwango (BAADA): maswali 20 ya fomu nyingine","老师 teacher"],
+ ["135–175","模拟卷四短卷：40 分钟、60 分，按考试规则","Mock 4 short paper: 40 minutes, 60 marks, under exam rules","Mtihani wa majaribio 4 (karatasi fupi): dakika 40, alama 60, kwa kanuni za mtihani","老师 teacher"],
+ ["175–180","后测问卷；老师导出成绩","POST questionnaire; teacher exports the results","Dodoso la BAADA; mwalimu anapakua matokeo","老师 teacher"]];
+ return '<h2>'+esc(t("plan"))+' '+printBtn()+'</h2><div class="card mut">'+{zh:"考试 10 月 12 日。每所学校一次集训，放学后 15:00–18:00，三小时做完原来三次课的内容：Donga 20 人（住校生，全校 86 人参加考试）、Jendele 33 人、Kiponda 8 人。李老师现场带老师，老师边学边辅导学生：前半段李老师主讲，后半段交给本校老师。全卷模拟（90 分钟）留给老师之后自己带全班做。",en:"The exam is on 12 October. Each school gets one session after school, 15:00–18:00, covering the earlier three sessions in three hours: Donga 20 students (boarders; 86 sit the exam), Jendele 33, Kiponda 8. Ms Li coaches the teacher on site and the teacher learns while tutoring the students: Li leads the first half and hands over to the school's own teacher for the second. The full 90-minute mock is left for the teacher to run with the whole class afterwards.",sw:"Mtihani ni tarehe 12 Oktoba. Kila shule inapata kipindi kimoja baada ya masomo, 15:00–18:00, chenye maudhui ya vipindi vitatu vya awali ndani ya saa tatu: Donga wanafunzi 20 (wa bweni; 86 watafanya mtihani), Jendele 33, Kiponda 8. Bi Li anamwongoza mwalimu papo hapo, na mwalimu anajifunza huku akiwasaidia wanafunzi: Li anaongoza nusu ya kwanza, kisha anamkabidhi mwalimu wa shule nusu ya pili. Mtihani kamili wa dakika 90 unaachwa kwa mwalimu aufanye na darasa zima baadaye."}[S.lang]+'</div><div class="card"><div class="tw"><table><tr><th style="width:80px">min</th><th></th><th style="width:150px">'+{zh:"谁主讲",en:"Who leads",sw:"Nani anaongoza"}[S.lang]+'</th></tr>'+P.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+esc(r[1+k])+'</td><td>'+esc(r[4])+'</td></tr>'}).join("")+'</table></div></div>';
 }
-
 function vReview(){
  var h='<h2>'+esc(t("review"))+' '+printBtn()+'</h2><h3>'+esc(t("vocab"))+'</h3>';
  VOCAB.forEach(function(g,i){
@@ -373,31 +392,32 @@ function paperHead(title){return '<div class="paper-head"><b>'+esc(title)+'</b><
 
 function vDiag(){
  var r=rec();if(!r)return needSign();
- var d=r.diag,ans=d?d.ans:[];
- var h='<h2>'+esc(t("diag"))+' · 20 '+printBtn()+'</h2>'+paperHead("Form II Chinese · Diagnostic · 20 marks · 20 minutes");
- if(d){var by={};DIAG.forEach(function(it,i){by[it.u]=by[it.u]||[0,0];by[it.u][1]++;if(ans[i]===it.a)by[it.u][0]++});
+ var wave=sget("f2x:dwave",null)||(r.diag&&!r.diag2?"post":"pre"),key=wave==="pre"?"diag":"diag2",d=r[key],form=d?d.form:formOf(r,wave),IT=form==="A"?DIAG:DIAGB,ans=d?d.ans:[];
+ var h='<h2>'+esc(t("diag"))+' · 20 '+printBtn()+'</h2><div class="row noprint" style="margin-bottom:10px"><button class="btn '+(wave==="pre"?"":"sec")+' sm" data-act="dwave" data-w="pre">'+esc(t("pre"))+(r.diag?" ✓":"")+'</button><button class="btn '+(wave==="post"?"":"sec")+' sm" data-act="dwave" data-w="post">'+esc(t("post"))+(r.diag2?" ✓":"")+'</button><span class="mut">Form '+form+'</span></div>'+paperHead("Form II Chinese · Diagnostic Form "+form+" · 20 marks · "+(wave==="pre"?"20":"15")+" minutes");
+ if(d){var by={};IT.forEach(function(it,i){by[it.u]=by[it.u]||[0,0];by[it.u][1]++;if(ans[i]===it.a)by[it.u][0]++});
   var weak=Object.keys(by).filter(function(u){return by[u][0]<by[u][1]}).map(function(u){return "F2U"+u+" ("+by[u][0]+"/"+by[u][1]+")"});
-  h+='<div class="card noprint"><span class="score">'+esc(t("score"))+': '+d.score+' / 20</span><div>'+esc(t("weak"))+': '+(weak.join(", ")||"—")+'</div><div class="mut">'+esc(t("wrongNote"))+'</div><button class="btn sec sm" data-act="rediag">'+esc(t("redo"))+'</button></div>'}
- h+='<div class="card">'+DIAG.map(function(it,i){return qHtml("d"+i,it,i,ans[i],!!d)}).join("")+'</div>';
- if(!d)h+='<button class="btn noprint" data-act="subdiag">'+esc(t("submit"))+'</button>';
- h+='<div class="key card"><h3>'+esc(t("key"))+'</h3>'+DIAG.map(function(it,i){return (i+1)+"."+"ABCD"[it.a]}).join("  ")+'</div>';
+  h+='<div class="card noprint"><span class="score">'+esc(t("score"))+': '+d.score+' / 20</span>'+(r.diag&&r.diag2?' <span class="mut">'+esc(t("pre"))+' '+r.diag.score+' → '+esc(t("post"))+' '+r.diag2.score+'</span>':"")+'<div>'+esc(t("weak"))+': '+(weak.join(", ")||"—")+'</div><div class="mut">'+esc(t("wrongNote"))+'</div><button class="btn sec sm tonly" data-act="rediag" data-k="'+key+'">'+esc(t("redo"))+'</button></div>'}
+ h+='<div class="card">'+IT.map(function(it,i){return qHtml("d"+i,it,i,ans[i],!!d)}).join("")+'</div>';
+ if(!d)h+='<button class="btn noprint" data-act="subdiag" data-k="'+key+'" data-f="'+form+'">'+esc(t("submit"))+'</button>';
+ h+='<div class="key card"><h3>'+esc(t("key"))+' · Form '+form+'</h3>'+IT.map(function(it,i){return (i+1)+"."+"ABCD"[it.a]}).join("  ")+'</div>';
  return h;
 }
 
 function vMock(){
  var r=rec();if(!r)return needSign();
  var m=r.mock,draft=r.mdraft||{ans:{},w:""},ans=m?m.ans:draft.ans,w=m?m.w:draft.w;
- var h='<h2>'+esc(t("mock"))+' 4 · 100 '+printBtn()+'</h2>'+paperHead("Form II Chinese · Mock 4 · 90 minutes · 100 marks")+
- '<div class="card noprint row"><span class="timer" id="timer">90:00</span>'+(m?"":'<button class="btn sec sm" data-act="timer">'+esc(t("startT"))+'</button>')+'<span class="mut">'+{zh:"安静作答，不带手机，听力每题播放两遍。",en:"Silence, no phones, each listening item is played twice.",sw:"Kimya, bila simu, kila swali la kusikiliza huchezwa mara mbili."}[S.lang]+'</span></div>';
- if(m){h+='<div class="card noprint"><span class="score">'+esc(t("score"))+': '+m.auto+' / 92'+(m.wmark!=null?' + '+m.wmark+' / 8 = '+(m.auto+m.wmark)+' / 100':'')+'</span><div>'+MOCK.map(function(s,i){return s.id+": "+m.secs[i]+"/"+(s.items.length*s.marks)}).join(" · ")+'</div><div class="mut">'+esc(t("wrongNote"))+'</div>'+
+ var short=(m?(m.mode||"full"):(r.mockmode||"short"))==="short",AMAX=0,SECS=MOCK.map(function(s){return short&&s.id!=="V"?{id:s.id,marks:s.marks,name:s.name,inst:s.inst,passage:s.passage,items:s.items.slice(0,5)}:s});SECS.forEach(function(s){AMAX+=s.items.length*s.marks});
+ var h='<h2>'+esc(t("mock"))+' 4 · '+(AMAX+8)+' '+printBtn()+'</h2>'+paperHead("Form II Chinese · Mock 4 · "+(short?"40":"90")+" minutes · "+(AMAX+8)+" marks")+(m?"":'<div class="row noprint" style="margin-bottom:10px"><button class="btn '+(short?"":"sec")+' sm" data-act="mmode" data-m="short">'+esc(t("short"))+'</button><button class="btn '+(short?"sec":"")+' sm" data-act="mmode" data-m="full">'+esc(t("full"))+'</button></div>')+
+ '<div class="card noprint row"><span class="timer" id="timer">'+(short?"40":"90")+':00</span>'+(m?"":'<button class="btn sec sm" data-act="timer">'+esc(t("startT"))+'</button>')+'<span class="mut">'+{zh:"安静作答，不带手机，听力每题播放两遍。",en:"Silence, no phones, each listening item is played twice.",sw:"Kimya, bila simu, kila swali la kusikiliza huchezwa mara mbili."}[S.lang]+'</span></div>';
+ if(m){h+='<div class="card noprint"><span class="score">'+esc(t("score"))+': '+m.auto+' / '+AMAX+(m.wmark!=null?' + '+m.wmark+' / 8 = '+(m.auto+m.wmark)+' / '+(AMAX+8):'')+'</span><div>'+SECS.map(function(s,i){return s.id+": "+m.secs[i]+"/"+(s.items.length*s.marks)}).join(" · ")+'</div><div class="mut">'+esc(t("wrongNote"))+'</div>'+
   '<div class="tonly row" style="margin-top:8px"><label>'+esc(t("wmark"))+' <input type="number" id="wmark" min="0" max="8" style="width:80px" value="'+(m.wmark!=null?m.wmark:"")+'"></label><button class="btn sm" data-act="wmark">'+esc(t("save"))+'</button><button class="btn sec sm" data-act="remock">'+esc(t("redo"))+'</button></div></div>'}
- MOCK.forEach(function(s){
-  h+='<div class="card"><h3 style="margin-top:0">'+esc(L(s.name))+'</h3><div class="mut">'+esc(L(s.inst))+'</div>'+(s.passage?'<div class="passage">'+esc(s.passage)+'</div>':"")+
+ SECS.forEach(function(s){
+  h+='<div class="card"><h3 style="margin-top:0">'+esc(short?L(s.name).replace(/[（(].*$/,""):L(s.name))+'</h3><div class="mut">'+esc(L(s.inst))+'</div>'+(s.passage?'<div class="passage">'+esc(s.passage)+'</div>':"")+
   s.items.map(function(it,i){var k=s.id+i;return qHtml("m"+k,it,i,ans[k],!!m,it.au?'<button class="btn sec sm noprint" data-say="'+esc(it.au)+'" data-n="2">'+esc(t("play"))+'</button> ':"")}).join("")+'</div>'});
  h+='<div class="card"><h3 style="margin-top:0">'+esc(L(WRITE.name))+'</h3><div>'+esc(WRITE.q.en)+'</div><div class="mut">'+esc(WRITE.q.sw)+'</div><div class="mut">'+esc(WRITE.q.zh)+'</div><textarea id="mw" '+(m?"readonly":"")+'>'+esc(w)+'</textarea><div class="mut noprint" id="wc"></div></div>';
  if(!m)h+='<button class="btn noprint" data-act="submock">'+esc(t("submit"))+'</button>';
- h+='<div class="key card"><h3>'+esc(t("key"))+'</h3>'+MOCK.map(function(s){return '<div><b>'+s.id+'</b> '+s.items.map(function(it,i){return (i+1)+"."+"ABCD"[it.a]}).join("  ")+'</div>'}).join("")+
- '<h3>'+esc(t("script"))+'</h3><ol>'+MOCK[0].items.map(function(it){return '<li class="hz" style="white-space:normal;font-size:17px">'+esc(it.au)+'</li>'}).join("")+'</ol>'+
+ h+='<div class="key card"><h3>'+esc(t("key"))+'</h3>'+SECS.map(function(s){return '<div><b>'+s.id+'</b> '+s.items.map(function(it,i){return (i+1)+"."+"ABCD"[it.a]}).join("  ")+'</div>'}).join("")+
+ '<h3>'+esc(t("script"))+'</h3><ol>'+SECS[0].items.map(function(it){return '<li class="hz" style="white-space:normal;font-size:17px">'+esc(it.au)+'</li>'}).join("")+'</ol>'+
  '<h3>VI</h3><div class="passage">'+esc(WRITE.model)+'</div><ul>'+WRITE.rubric.map(function(x){return '<li>'+esc(x.en)+'<br><span class="mut">'+esc(x.sw)+'</span><br><span class="mut">'+esc(x.zh)+'</span></li>'}).join("")+'</ul></div>';
  return h;
 }
@@ -423,18 +443,18 @@ function vSurvey(){
  return h;
 }
 
-var COLS=["school","id","mode","diag","mock_I","mock_II","mock_III","mock_IV","mock_V","mock_auto","writing","mock_total","pre1","pre2","pre3","pre4","pre5","pre6","pre7","pre8","post1","post2","post3","post4","post5","post6","post7","post8","dev","hrs","hard","best","change","help"];
+var COLS=["school","id","mode","diag_form_pre","diag_pre","diag_post","mock_mode","mock_max","mock_I","mock_II","mock_III","mock_IV","mock_V","mock_auto","writing","mock_total","pre1","pre2","pre3","pre4","pre5","pre6","pre7","pre8","post1","post2","post3","post4","post5","post6","post7","post8","dev","hrs","hard","best","change","help"];
 function rowOf(r){var m=r.mock||{},s=m.secs||[],p=r.pre||{},q=r.post||{};
- var a=[r.school,r.id,{m1:"own_device",m2:"whole_class",m3:"print"}[r.mode]||"",r.diag?r.diag.score:"",s[0],s[1],s[2],s[3],s[4],m.auto,m.wmark,(m.auto!=null&&m.wmark!=null)?m.auto+m.wmark:""];
+ var a=[r.school,r.id,{m1:"own_device",m2:"whole_class",m3:"print"}[r.mode]||"",r.diag?r.diag.form||"A":"",r.diag?r.diag.score:"",r.diag2?r.diag2.score:"",m.mode||(r.mock?"full":""),r.mock?(m.max||92)+8:"",s[0],s[1],s[2],s[3],s[4],m.auto,m.wmark,(m.auto!=null&&m.wmark!=null)?m.auto+m.wmark:""];
  for(var i=1;i<=8;i++)a.push(p["q"+i]);for(i=1;i<=8;i++)a.push(q["q"+i]);
  a.push(p.dev,p.hrs,p.hard,q.best,q.change,q.help);return a.map(function(x){return x==null?"":x})}
 function vResults(){
  var ks=Object.keys(RECS).sort();
  var h='<h2>'+esc(t("results"))+'</h2><div class="card row noprint"><button class="btn" data-act="csv">CSV</button><button class="btn sec" data-act="json">JSON</button>'+printBtn()+'<span class="mut">'+ks.length+' records on this device</span></div>'+
- '<div class="card"><div class="tw"><table><tr>'+COLS.slice(0,12).map(function(c){return '<th>'+c+'</th>'}).join("")+'<th>SE pre→post</th><th>TAM</th><th>DA</th><th>CR</th></tr>'+
+ '<div class="card"><div class="tw"><table><tr>'+COLS.slice(0,16).map(function(c){return '<th>'+c+'</th>'}).join("")+'<th>SE pre→post</th><th>TAM</th><th>DA</th><th>CR</th></tr>'+
  ks.map(function(k){var r=RECS[k],a=rowOf(r),p=r.pre||{},q=r.post||{};function pr(i,j){function v(o){return (o["q"+i]!=null&&o["q"+j]!=null)?((o["q"+i]+o["q"+j])/2).toFixed(1):"—"}return v(p)+" → "+v(q)}
-  return '<tr>'+a.slice(0,12).map(function(x){return '<td>'+esc(x)+'</td>'}).join("")+'<td>'+pr(1,2)+'</td><td>'+pr(3,4)+'</td><td>'+pr(5,6)+'</td><td>'+pr(7,8)+'</td></tr>'}).join("")+'</table></div></div>'+
- '<div class="card mut"><b>Research notes · 研究说明</b><br>Items 1–2 = Self-Efficacy (SE), 3–4 = Technology Acceptance (TAM), 5–6 = Digital Agency (DA), 7–8 = Contextual Resilience (CR): the four DILM variables, adapted here for students. Matched PRE/POST by anonymous code; "mode" (own device / whole class / print) gives the comparison between the 86-student class and the small device classes. The items are adapted, not yet validated scales; students are minors, so collect with permission from the school and the Ministry and keep codes, never names. Each device stores only its own records: export a CSV from every device and merge.<br>第 1–2 题 = 自我效能，3–4 = 技术接受，5–6 = 数字能动性，7–8 = 情境韧性（DILM 四个变量的学生版）。按匿名编号前后配对；“学习方式”一栏用于比较 86 人大班和小班设备组。题目是改编的，还不是验证过的量表；学生是未成年人，请在学校和教育部许可范围内收集，只用编号不写名字。每台设备只保存自己的记录，请逐台导出 CSV 后合并。</div>';
+  return '<tr>'+a.slice(0,16).map(function(x){return '<td>'+esc(x)+'</td>'}).join("")+'<td>'+pr(1,2)+'</td><td>'+pr(3,4)+'</td><td>'+pr(5,6)+'</td><td>'+pr(7,8)+'</td></tr>'}).join("")+'</table></div></div>'+
+ '<div class="card mut"><b>Research notes · 研究说明</b><br>Items 1–2 = Self-Efficacy (SE), 3–4 = Technology Acceptance (TAM), 5–6 = Digital Agency (DA), 7–8 = Contextual Resilience (CR): the four DILM variables, adapted here for students. Matched PRE/POST by anonymous code; "mode" (own device / whole class / print) records how each learner worked. The items are adapted, not yet validated scales; students are minors, so collect with permission from the school and the Ministry and keep codes, never names. Each device stores only its own records: export a CSV from every device and merge.<br>第 1–2 题 = 自我效能，3–4 = 技术接受，5–6 = 数字能动性，7–8 = 情境韧性（DILM 四个变量的学生版）。按匿名编号前后配对；“学习方式”一栏记录每个学生的学习方式。水平测试有 A、B 两套平行卷：编号末位是单数的学生先做 A、后做 B，双数相反，这样前后测的差不受某一套卷难易的影响。 The diagnostic has two parallel forms: odd codes sit A first and B at the end, even codes the reverse, so the pre/post difference does not depend on which form is harder.题目是改编的，还不是验证过的量表；学生是未成年人，请在学校和教育部许可范围内收集，只用编号不写名字。每台设备只保存自己的记录，请逐台导出 CSV 后合并。</div>';
  return h;
 }
 function download(name,text,type){var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+text],{type:type}));a.download=name;document.body.appendChild(a);a.click();a.remove()}
@@ -446,14 +466,16 @@ document.addEventListener("click",function(e){
  if(el.dataset.view){VIEW=el.dataset.view;render();return}
  var a=el.dataset.act,r=rec();
  if(a==="print"){window.print()}
- else if(a==="signin"){var id=$("#fid").value.trim();if(!id){$("#fid").focus();return}CUR={school:$("#fsch").value,id:id,mode:$("#fmode").value};sset("f2x:cur",CUR);rec().mode=CUR.mode;saveRecs();sset("f2x:wave",null);timerEnd=0;render()}
+ else if(a==="signin"){var id=$("#fid").value.trim();if(!id){$("#fid").focus();return}CUR={school:$("#fsch").value,id:id,mode:$("#fmode").value};sset("f2x:cur",CUR);rec().mode=CUR.mode;saveRecs();sset("f2x:wave",null);sset("f2x:dwave",null);timerEnd=0;render()}
  else if(a==="quiz"){startQuiz(+el.dataset.g)}
  else if(a==="qa"){quizAnswer(+el.dataset.j,el)}
- else if(a==="subdiag"){var ans=collect("d",DIAG.length),sc=0;DIAG.forEach(function(it,i){if(ans[i]===it.a)sc++});r.diag={ans:ans,score:sc,ts:Date.now()};saveRecs();render()}
- else if(a==="rediag"){delete r.diag;saveRecs();render()}
- else if(a==="timer"){timerEnd=Date.now()+90*60000;tick()}
- else if(a==="submock"){var all={},secs=[],auto=0;MOCK.forEach(function(s){var an=collect("m"+s.id,s.items.length),sc=0;s.items.forEach(function(it,i){all[s.id+i]=an[i];if(an[i]===it.a)sc+=s.marks});secs.push(sc);auto+=sc});
-  r.mock={ans:all,w:$("#mw").value,secs:secs,auto:auto,wmark:null,ts:Date.now()};delete r.mdraft;saveRecs();timerEnd=0;render()}
+ else if(a==="subdiag"){var IT=el.dataset.f==="A"?DIAG:DIAGB,ans=collect("d",IT.length),sc=0;IT.forEach(function(it,i){if(ans[i]===it.a)sc++});r[el.dataset.k]={form:el.dataset.f,ans:ans,score:sc,ts:Date.now()};saveRecs();render()}
+ else if(a==="dwave"){sset("f2x:dwave",el.dataset.w);render()}
+ else if(a==="rediag"){delete r[el.dataset.k];saveRecs();render()}
+ else if(a==="timer"){timerEnd=Date.now()+((r.mockmode||"short")==="short"?40:90)*60000;tick()}
+ else if(a==="mmode"){r.mockmode=el.dataset.m;saveRecs();render()}
+ else if(a==="submock"){var all={},secs=[],auto=0;var sh=(r.mockmode||"short")==="short",mx=0;MOCK.forEach(function(s){var its=sh&&s.id!=="V"?s.items.slice(0,5):s.items,an=collect("m"+s.id,its.length),sc=0;its.forEach(function(it,i){all[s.id+i]=an[i];if(an[i]===it.a)sc+=s.marks});secs.push(sc);auto+=sc;mx+=its.length*s.marks});
+  r.mock={mode:sh?"short":"full",max:mx,ans:all,w:$("#mw").value,secs:secs,auto:auto,wmark:null,ts:Date.now()};delete r.mdraft;saveRecs();timerEnd=0;render()}
  else if(a==="remock"){delete r.mock;saveRecs();render()}
  else if(a==="wmark"){var v=parseFloat($("#wmark").value);if(!(v>=0&&v<=8))return;r.mock.wmark=v;saveRecs();render()}
  else if(a==="wave"){sset("f2x:wave",el.dataset.w);render()}
