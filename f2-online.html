@@ -43,6 +43,9 @@ body.hide-py .py,body.hide-mean .mean{visibility:hidden}
 .opts label{display:flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:9px;padding:9px 10px;font-size:18px;cursor:pointer;background:#fff}
 .opts input{width:18px;height:18px}
 .q.wrong{background:#fdf0ee;outline:2px solid var(--bad);outline-offset:4px;border-radius:6px}
+ruby rt{font-size:.5em;color:var(--acc)}
+body.hide-py ruby rt{visibility:hidden}
+td[data-bad]{background:#fde3df}
 .q.right .stem::after{content:" ✓";color:var(--ok)}
 .passage{background:var(--pri2);border-radius:10px;padding:12px;font-size:19px;line-height:1.9;margin-bottom:8px}
 .score{font-size:26px;font-weight:700;color:var(--pri)}
@@ -71,7 +74,8 @@ body.teacher .tonly{display:revert}
  .opts label{border:0;padding:0;font-size:12pt}
  .paper-head{display:block;margin-bottom:8pt}
  .key{break-before:page}
- body.hide-py .py,body.hide-mean .mean{visibility:visible}
+ body.hide-py .py,body.hide-mean .mean,body.hide-py ruby rt{visibility:visible}
+ ruby rt{color:#000}
  .survey,.survey td,.survey th{font-size:10.5pt;line-height:1.25}
  .survey td,.survey th{padding:2pt 4pt}
  .lik label{border:1px solid #777;padding:0 6pt}
@@ -106,6 +110,7 @@ var VOCAB=[
 "短信|Messages|Jumbe::微信|Wēixìn|WeChat|WeChat;短信|duǎnxìn|text message|ujumbe mfupi (SMS);发|fā|to send|kutuma;收到|shōudào|received / got it|nimepokea / sawa;在吗|zài ma|are you there?|upo?;好的|hǎo de|OK|sawa;明天见|míngtiān jiàn|see you tomorrow|tuonane kesho;照片|zhàopiàn|photo|picha;忙|máng|busy|-enye shughuli nyingi;一起|yìqǐ|together|pamoja",
 "学习与考试|Study and exams|Kusoma na mitihani::复习|fùxí|to revise|kurudia masomo;考试|kǎoshì|exam|mtihani;答案|dá'àn|answer|jibu;对|duì|correct|sahihi;错|cuò|wrong|kosa / si sahihi;懂|dǒng|to understand|kuelewa;觉得|juéde|to think / feel|kuhisi / kufikiri;容易|róngyì|easy|rahisi;问题|wèntí|question / problem|swali / tatizo"
 ].map(function(s){var a=s.split("::"),n=a[0].split("|");return{zh:n[0],en:n[1],sw:n[2],words:a[1].split(";").map(function(w){w=w.split("|");return{h:w[0],p:w[1],en:w[2],sw:w[3]}})}});
+VOCAB.push({zh:"真题高频词",en:"Words from the real exam paper",sw:"Maneno ya karatasi halisi ya mtihani",words:"比赛|bǐsài|match / competition|mashindano;篮球|lánqiú|basketball|mpira wa kikapu;留学|liúxué|to study abroad|kusoma nje ya nchi;虽然|suīrán|although|ingawa;但是|dànshì|but|lakini;不但|búdàn|not only|si tu;还|hái|also / still|pia / bado;药|yào|medicine|dawa;生病|shēngbìng|to fall ill|kuugua;肚子|dùzi|stomach|tumbo;检查|jiǎnchá|to check|kukagua;表演|biǎoyǎn|performance / to perform|onyesho / kuigiza;回答|huídá|to answer|kujibu;音乐|yīnyuè|music|muziki;教|jiāo|to teach|kufundisha;把|bǎ|(puts the object before the verb)|(huweka kitu kabla ya kitenzi);打算|dǎsuàn|to plan / to intend|kupanga / kukusudia;计划|jìhuà|plan|mpango;准备|zhǔnbèi|to prepare|kujiandaa;参观|cānguān|to visit (a place)|kutembelea (mahali);需要|xūyào|to need|kuhitaji;选择|xuǎnzé|to choose|kuchagua;价格|jiàgé|price|bei;有趣|yǒuqù|interesting|-a kuvutia;注意|zhùyì|to pay attention|kuwa makini;认真|rènzhēn|careful / serious|makini;银行|yínháng|bank|benki;提高|tígāo|to improve|kuboresha;奇怪|qíguài|strange|-a ajabu;邀请|yāoqǐng|to invite|kualika;礼物|lǐwù|gift|zawadi;超市|chāoshì|supermarket|duka kubwa;练习|liànxí|to practise|kufanya mazoezi;首都|shǒudū|capital city|mji mkuu;环境|huánjìng|environment|mazingira;内容|nèiróng|content|maudhui;聊天|liáotiān|to chat|kupiga soga;旅游|lǚyóu|to travel|kutalii;暑假|shǔjià|long school holiday|likizo ndefu ya shule;希望|xīwàng|to hope|kutumaini;开心|kāixīn|happy|-enye furaha;一边……一边|yìbiān…yìbiān|doing two things at once|huku… huku;周末|zhōumò|weekend|wikendi;家务|jiāwù|housework|kazi za nyumbani".split(";").map(function(w){w=w.split("|");return{h:w[0],p:w[1],en:w[2],sw:w[3]}})});
 var PATTERNS=[
 "我家有……和……。|我家有三个房间和一个客厅。|Wǒ jiā yǒu sān gè fángjiān hé yí gè kètīng.|My home has three rooms and a living room.|Nyumbani kwetu kuna vyumba vitatu na sebule moja.",
 "……在……里 / 上。|电视在客厅里。手机在床上。|Diànshì zài kètīng li. Shǒujī zài chuáng shang.|The TV is in the living room. The phone is on the bed.|Televisheni iko sebuleni. Simu iko juu ya kitanda.",
@@ -278,7 +283,7 @@ var OPENQ=[["change","这三次复习以后，你学汉语的方法有什么变�
 
 /* UI strings */
 var UI={
-home:["开始","Start","Anza"],plan:["三小时集训方案","3-hour session plan","Mpango wa kipindi cha saa 3"],review:["复习","Revision","Marudio"],diag:["水平测试","Diagnostic","Jaribio la kiwango"],mock:["模拟考试","Mock exam","Mtihani wa majaribio"],survey:["问卷","Questionnaire","Dodoso"],results:["成绩（老师）","Results (teacher)","Matokeo (mwalimu)"],
+home:["开始","Start","Anza"],plan:["三小时集训方案","3-hour session plan","Mpango wa kipindi cha saa 3"],review:["复习","Revision","Marudio"],diag:["水平测试","Diagnostic","Jaribio la kiwango"],mock:["模拟卷四（含听力）","Mock 4 (with listening)","Mtihani 4 (na kusikiliza)"],real:["国考格式模拟卷","Exam-format mock","Mtihani kwa muundo halisi"],survey:["问卷","Questionnaire","Dodoso"],results:["成绩（老师）","Results (teacher)","Matokeo (mwalimu)"],
 mean:["释义","meanings","maana"],teacherOn:["老师模式：开","Teacher mode: ON","Hali ya mwalimu: IMEWASHWA"],teacherOff:["老师模式","Teacher mode","Hali ya mwalimu"],
 print:["🖨 打印","🖨 Print","🖨 Chapisha"],submit:["交卷","Submit","Wasilisha"],save:["保存","Save","Hifadhi"],saved:["已保存 ✓","Saved ✓","Imehifadhiwa ✓"],
 school:["学校","School","Shule"],sid:["学生编号（不写名字）","Student code (no names)","Namba ya mwanafunzi (bila jina)"],mode:["学习方式","How you study here","Unavyojifunza hapa"],
@@ -287,7 +292,7 @@ signin:["登记后开始","Sign in to start","Jisajili ili kuanza"],change:["换
 score:["得分","Score","Alama"],redo:["重做","Try again","Jaribu tena"],wrongNote:["红框是错题。先自己找出正确答案，再重做。","Items in red are wrong. Find the right answer yourself, then try again.","Maswali yenye rangi nyekundu si sahihi. Tafuta jibu sahihi mwenyewe, kisha jaribu tena."],
 play:["▶ 播放两遍","▶ Play twice","▶ Cheza mara mbili"],novoice:["这台设备不能朗读中文，请老师读。","This device cannot read Chinese aloud — the teacher reads the script.","Kifaa hiki hakiwezi kusoma Kichina — mwalimu atasoma."],
 startT:["开始计时","Start the timer","Anza saa"],short:["短卷 40 分钟 · 60 分","Short paper · 40 min · 60 marks","Karatasi fupi · dakika 40 · alama 60"],full:["全卷 90 分钟 · 100 分","Full paper · 90 min · 100 marks","Karatasi kamili · dakika 90 · alama 100"],pre:["前测","PRE","KABLA"],post:["后测","POST","BAADA"],
-quiz:["小测","Quiz me","Nijaribu"],vocab:["词汇（8 组 · 88 个）","Vocabulary (8 groups · 88 words)","Msamiati (makundi 8 · maneno 88)"],pat:["12 个重点句型","12 key patterns","Miundo 12 muhimu"],gram:["9 条语法","9 grammar points","Hoja 9 za sarufi"],mist:["5 个常见错误","5 common mistakes","Makosa 5 ya kawaida"],note:["便条","The note","Ujumbe mfupi"],
+quiz:["小测","Quiz me","Nijaribu"],vocab:["词汇","Vocabulary","Msamiati"],pat:["12 个重点句型","12 key patterns","Miundo 12 muhimu"],gram:["9 条语法","9 grammar points","Hoja 9 za sarufi"],mist:["5 个常见错误","5 common mistakes","Makosa 5 ya kawaida"],note:["便条","The note","Ujumbe mfupi"],
 key:["答案（老师）","Answer key (teacher)","Majibu (mwalimu)"],script:["听力原文","Listening script","Maandishi ya kusikiliza"],wmark:["写作得分（老师填 0–8）","Writing mark (teacher, 0–8)","Alama ya kuandika (mwalimu, 0–8)"],
 unit:["单元","Unit","Kipindi"],weak:["最弱的单元","Weakest units","Vipindi dhaifu zaidi"],done:["已完成","done","imekamilika"]};
 /* ================= STATE ================= */
@@ -317,7 +322,7 @@ function say(txt,times){
 function alertBox(m){var b=document.createElement("div");b.className="card";b.style.cssText="position:fixed;left:16px;right:16px;bottom:16px;z-index:9;border-color:#8a5a00";b.textContent=m;document.body.appendChild(b);setTimeout(function(){b.remove()},4000)}
 function sayBtn(txt,n){return '<button class="say" data-say="'+esc(txt)+'" data-n="'+(n||1)+'" aria-label="play">▶</button>'}
 /* ================= RENDER ================= */
-var TABS=["home","review","diag","mock","survey","plan","results"];
+var TABS=["home","review","diag","real","mock","survey","plan","results"];
 function nav(){
  $("#nav").innerHTML=TABS.map(function(k){if(k==="results"&&!TEACH)return"";return '<button data-view="'+k+'" class="'+(VIEW===k?"on":"")+'">'+esc(t(k))+'</button>'}).join("");
  $("#who").textContent=CUR?(CUR.school+" · "+CUR.id):"";
@@ -325,7 +330,7 @@ function nav(){
  document.body.classList.toggle("hide-py",!S.py);document.body.classList.toggle("hide-mean",!S.mean);document.body.classList.toggle("teacher",TEACH);
  document.documentElement.lang=S.lang;
 }
-function render(){nav();var h={home:vHome,plan:vPlan,review:vReview,diag:vDiag,mock:vMock,survey:vSurvey,results:vResults}[VIEW]();$("#app").innerHTML=h;window.scrollTo(0,0);if(VIEW==="mock")tick()}
+function render(){nav();var h={home:vHome,plan:vPlan,review:vReview,diag:vDiag,real:vReal,mock:vMock,survey:vSurvey,results:vResults}[VIEW]();$("#app").innerHTML=h;window.scrollTo(0,0);if(VIEW==="mock")tick()}
 function printBtn(){return '<button class="btn sec sm noprint" data-act="print">'+t("print")+'</button>'}
 function needSign(){return '<div class="card">'+esc(t("need"))+' <button class="btn sm" data-view="home">'+esc(t("home"))+'</button></div>'}
 
@@ -349,9 +354,9 @@ function vPlan(){
  ["75–90","休息 / 礼拜","Break / prayer","Mapumziko / sala","—"],
  ["90–120","复习下：词汇第 5–8 组；句型 8–12；5 个常见错误；便条三步","Revision B: vocabulary groups 5–8; patterns 8–12; the 5 common mistakes; the note in three steps","Marudio B: msamiati makundi 5–8; miundo 8–12; makosa 5 ya kawaida; ujumbe mfupi kwa hatua tatu","老师 teacher（李协助 Li assists）"],
  ["120–135","水平测试（后）：另一套 20 题","Diagnostic (POST): the other 20-item form","Jaribio la kiwango (BAADA): maswali 20 ya fomu nyingine","老师 teacher"],
- ["135–175","模拟卷四短卷：40 分钟、60 分，按考试规则","Mock 4 short paper: 40 minutes, 60 marks, under exam rules","Mtihani wa majaribio 4 (karatasi fupi): dakika 40, alama 60, kwa kanuni za mtihani","老师 teacher"],
+ ["135–175","国考格式模拟卷：第一部分（屏幕）加第三、五、七题（纸笔），40 分钟","Exam-format mock: Part 1 (on screen) plus Questions 3, 5 and 7 (on paper), 40 minutes","Mtihani kwa muundo halisi: Sehemu ya 1 (skrini) na Maswali 3, 5 na 7 (karatasi), dakika 40","老师 teacher"],
  ["175–180","后测问卷；老师导出成绩","POST questionnaire; teacher exports the results","Dodoso la BAADA; mwalimu anapakua matokeo","老师 teacher"]];
- return '<h2>'+esc(t("plan"))+' '+printBtn()+'</h2><div class="card mut">'+{zh:"考试 10 月 12 日。每所学校一次集训，放学后 15:00–18:00，三小时做完原来三次课的内容：Donga 20 人（住校生，全校 86 人参加考试）、Jendele 33 人、Kiponda 8 人。李老师现场带老师，老师边学边辅导学生：前半段李老师主讲，后半段交给本校老师。全卷模拟（90 分钟）留给老师之后自己带全班做。",en:"The exam is on 12 October. Each school gets one session after school, 15:00–18:00, covering the earlier three sessions in three hours: Donga 20 students (boarders; 86 sit the exam), Jendele 33, Kiponda 8. Ms Li coaches the teacher on site and the teacher learns while tutoring the students: Li leads the first half and hands over to the school's own teacher for the second. The full 90-minute mock is left for the teacher to run with the whole class afterwards.",sw:"Mtihani ni tarehe 12 Oktoba. Kila shule inapata kipindi kimoja baada ya masomo, 15:00–18:00, chenye maudhui ya vipindi vitatu vya awali ndani ya saa tatu: Donga wanafunzi 20 (wa bweni; 86 watafanya mtihani), Jendele 33, Kiponda 8. Bi Li anamwongoza mwalimu papo hapo, na mwalimu anajifunza huku akiwasaidia wanafunzi: Li anaongoza nusu ya kwanza, kisha anamkabidhi mwalimu wa shule nusu ya pili. Mtihani kamili wa dakika 90 unaachwa kwa mwalimu aufanye na darasa zima baadaye."}[S.lang]+'</div><div class="card"><div class="tw"><table><tr><th style="width:80px">min</th><th></th><th style="width:150px">'+{zh:"谁主讲",en:"Who leads",sw:"Nani anaongoza"}[S.lang]+'</th></tr>'+P.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+esc(r[1+k])+'</td><td>'+esc(r[4])+'</td></tr>'}).join("")+'</table></div></div>';
+ return '<h2>'+esc(t("plan"))+' '+printBtn()+'</h2><div class="card mut">'+{zh:"考试 10 月 12 日。每所学校一次集训，放学后 15:00–18:00，三小时做完原来三次课的内容：Donga 20 人（住校生，全校 86 人参加考试）、Jendele 33 人、Kiponda 8 人。李老师现场带老师，老师边学边辅导学生：前半段李老师主讲，后半段交给本校老师。正式考试是 2 小时 30 分钟、10 道题、没有听力，汉字上印有拼音。完整的国考格式模拟卷留给老师之后自己带全班做。",en:"The exam is on 12 October. Each school gets one session after school, 15:00–18:00, covering the earlier three sessions in three hours: Donga 20 students (boarders; 86 sit the exam), Jendele 33, Kiponda 8. Ms Li coaches the teacher on site and the teacher learns while tutoring the students: Li leads the first half and hands over to the school's own teacher for the second. The real exam is 2 hours 30 minutes, 10 questions, no listening, with pinyin printed above the characters. The complete exam-format mock is left for the teacher to run with the whole class afterwards.",sw:"Mtihani ni tarehe 12 Oktoba. Kila shule inapata kipindi kimoja baada ya masomo, 15:00–18:00, chenye maudhui ya vipindi vitatu vya awali ndani ya saa tatu: Donga wanafunzi 20 (wa bweni; 86 watafanya mtihani), Jendele 33, Kiponda 8. Bi Li anamwongoza mwalimu papo hapo, na mwalimu anajifunza huku akiwasaidia wanafunzi: Li anaongoza nusu ya kwanza, kisha anamkabidhi mwalimu wa shule nusu ya pili. Mtihani halisi ni saa 2 na dakika 30, maswali 10, bila kusikiliza, na pinyin juu ya herufi. Mtihani kamili kwa muundo halisi unaachwa kwa mwalimu aufanye na darasa zima baadaye."}[S.lang]+'</div><div class="card"><div class="tw"><table><tr><th style="width:80px">min</th><th></th><th style="width:150px">'+{zh:"谁主讲",en:"Who leads",sw:"Nani anaongoza"}[S.lang]+'</th></tr>'+P.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+esc(r[1+k])+'</td><td>'+esc(r[4])+'</td></tr>'}).join("")+'</table></div></div>';
 }
 function vReview(){
  var h='<h2>'+esc(t("review"))+' '+printBtn()+'</h2><h3>'+esc(t("vocab"))+'</h3>';
@@ -421,6 +426,63 @@ function vMock(){
  '<h3>VI</h3><div class="passage">'+esc(WRITE.model)+'</div><ul>'+WRITE.rubric.map(function(x){return '<li>'+esc(x.en)+'<br><span class="mut">'+esc(x.sw)+'</span><br><span class="mut">'+esc(x.zh)+'</span></li>'}).join("")+'</ul></div>';
  return h;
 }
+/* ===== Exam-format mock (modelled on the Form Two paper sent by the Kiponda teacher: 2:30 hours, 10 questions, pinyin printed above the characters, no listening) ===== */
+var PYD={"我":"wǒ","你":"nǐ","他":"tā","她":"tā","我们":"wǒmen","你们":"nǐmen","爸爸":"bàba","妈妈":"māma","哥哥":"gēge","弟弟":"dìdi","朋友":"péngyou","老师":"lǎoshī","医生":"yīshēng","司机":"sījī","学生":"xuésheng","中国人":"Zhōngguórén","阿里":"Ālǐ","谁":"shéi",
+"在":"zài","是":"shì","的":"de","了":"le","吗":"ma","吧":"ba","和":"hé","也":"yě","都":"dōu","很":"hěn","太":"tài","不":"bù","没":"méi","还":"hái","会":"huì","能":"néng","想":"xiǎng","请":"qǐng","请问":"qǐngwèn","把":"bǎ","从":"cóng","离":"lí","给":"gěi","用":"yòng","有":"yǒu","去":"qù","来":"lái","回家":"huí jiā","到了":"dào le",
+"医院":"yīyuàn","工作":"gōngzuò","学习":"xuéxí","睡觉":"shuìjiào","旅游":"lǚyóu","每天":"měi tiān","早上":"zǎoshang","牛奶":"niúnǎi","吃":"chī","喝":"hē","看":"kàn","听":"tīng","说":"shuō","英语":"Yīngyǔ","汉语":"Hànyǔ",
+"因为……所以":"yīnwèi…suǒyǐ","虽然……但是":"suīrán…dànshì","不但……还":"búdàn…hái","要是……就":"yàoshi…jiù","因为":"yīnwèi","虽然":"suīrán","所以":"suǒyǐ","要是":"yàoshi","但是":"dànshì",
+"这":"zhè","件":"jiàn","衣服":"yīfu","贵":"guì","一点儿":"yìdiǎnr","便宜":"piányi","漂亮":"piàoliang","干净":"gānjìng","容易":"róngyì","今天":"jīntiān","下雨":"xià yǔ","学校":"xuéxiào","买":"mǎi","三":"sān","书":"shū","个":"gè","本":"běn","条":"tiáo",
+"祝":"zhù","生日":"shēngrì","快乐":"kuàilè","肚子":"dùzi","疼":"téng","商店":"shāngdiàn","图书馆":"túshūguǎn","车站":"chēzhàn","开":"kāi","公共汽车":"gōnggòng qìchē","可能":"kěnéng","下面":"xiàmiàn","标点":"biāodiǎn","符号":"fúhào","哪":"nǎ","一":"yī","句号":"jùhào",
+"叫":"jiào","什么":"shénme","名字":"míngzi","家":"jiā","几":"jǐ","口":"kǒu","人":"rén","五":"wǔ","现在":"xiànzài","点":"diǎn","两":"liǎng","半":"bàn","为什么":"wèi shénme","上课":"shàngkè","生病":"shēngbìng","西瓜":"xīguā","多少":"duōshao","钱":"qián","三千":"sānqiān","先令":"xiānlìng","周末":"zhōumò","打算":"dǎsuàn","做":"zuò","打扫":"dǎsǎo","房间":"fángjiān","喜欢":"xǐhuan","踢":"tī","足球":"zúqiú",
+"作业":"zuòyè","做完":"zuòwán","做饭":"zuò fàn","厨房":"chúfáng","里":"li","明天":"míngtiān","市场":"shìchǎng","水果":"shuǐguǒ","中国":"Zhōngguó",
+"星期天":"xīngqītiān","一起":"yìqǐ","海边":"hǎibiān","准备":"zhǔnbèi","带":"dài","一些":"yìxiē","水":"shuǐ","以后":"yǐhòu","先":"xiān","游泳":"yóuyǒng","然后":"ránhòu","中午":"zhōngwǔ","米饭":"mǐfàn","鱼":"yú","下午":"xiàwǔ","四":"sì","觉得":"juéde","开心":"kāixīn",
+"热":"rè","好":"hǎo","八":"bā","东西":"dōngxi","哪儿":"nǎr","远":"yuǎn","放":"fàng","桌子":"zhuōzi","上":"shang","怎么":"zěnme","走":"zǒu",
+"礼物":"lǐwù","感冒":"gǎnmào","看书":"kàn shū","送":"sòng","手机":"shǒujī","星期六":"xīngqīliù","六":"liù","天气":"tiānqì","打":"dǎ","电话":"diànhuà",
+"完":"wán","早饭":"zǎofàn","晚上":"wǎnshang","十":"shí","七":"qī","起床":"qǐchuáng","帮":"bāng","友":"you","课":"kè"};
+var RM={
+q1:[["我 爸爸 在 医院 ___ ， 他 是 医生 。",["工作","学习","睡觉","旅游"],0],["我 每天 早上 ___ 牛奶 。",["吃","喝","看","听"],1],["他 ___ 会 说 英语 ， ___ 会 说 汉语 。",["因为……所以","虽然……但是","不但……还","要是……就"],2],["这 件 衣服 太 贵 了 ， ___ 一点儿 吧 。",["便宜","漂亮","干净","容易"],0],["___ 今天 下雨 ， 但是 我们 还 去 学校 。",["因为","虽然","所以","要是"],1],["我 买 了 三 ___ 书 。",["个","本","件","条"],1],["祝 你 生日 ___ ！",["快乐","容易","干净","便宜"],0],["我 肚子 疼 ， 想 去 ___ 看 医生 。",["商店","医院","图书馆","车站"],1],["他 每天 开 公共汽车 ， 他 可能 是 谁 ？",["老师","医生","司机","学生"],2],["下面 的 标点 符号 ， 哪 一 个 是 “ 句号 ” ？",["？","，","。","！"],2]],
+q2a:["你 家 有 几 口 人 ？","现在 几 点 ？","你 为什么 没 来 上课 ？","这 个 西瓜 多少 钱 ？","你 周末 打算 做 什么 ？"],
+q2ex:["你 叫 什么 名字 ？","G"],
+q2b:["因为 我 生病 了 。","三千 先令 一 个 。","我 喜欢 踢 足球 。","我 家 有 五 口 人 。","我 打算 在 家 打扫 房间 。","现在 两 点 半 。","我 叫 阿里 。"],
+q2k:[3,5,0,1,4],
+q3:[["把 / 我 / 作业 / 做完 / 了","我把作业做完了。"],["都 / 我们 / 喜欢 / 汉语 / 学习","我们都喜欢学习汉语。"],["在 / 妈妈 / 做饭 / 厨房 / 里","妈妈在厨房里做饭。"],["明天 / 打算 / 我 / 去 / 市场 / 买 / 水果","我明天打算去市场买水果。（明天我打算…… also correct）"],["从 / 他 / 来 / 中国 / 的 / 是","他是从中国来的。"]],
+q4:"今天 是 星期天 ， 我 和 哥哥 *打算 一起 去 海边 。 我们 *准备 带 一些 水果 和 水 。 到了 海边 以后 ， 我们 先 *游泳 ， 然后 踢 足球 。 *中午 我们 吃 米饭 和 鱼 。 下午 四 点 我们 回家 。 我 觉得 今天 很 *开心 。",
+q5:[["请 ___ ， 车站 在 哪儿 ？","问 / 间","问"],["今天 很 热 ， 我 想 喝 ___ 。","水 / 永","水"],["他 是 我 的 好 ___ 友 。","朋 / 明","朋"],["我们 八 点 ___ 课 。","上 / 土","上"],["妈妈 在 商店 ___ 东西 。","买 / 卖","买"]],
+q6:[["我 学校 学习 汉语 。","在","我在学校学习汉语。"],["我 家 学校 很 远 。","离","我家离学校很远。"],["他 书 放 在 桌子 上 了 。","把","他把书放在桌子上了。"],["哥哥 喜欢 游泳 ， 我 喜欢 游泳 。","也","哥哥喜欢游泳，我也喜欢游泳。"],["请问 ， 医院 走 ？","怎么","请问，医院怎么走？"]],
+q7bank:["礼物","打扫","便宜","感冒","一起","图书馆"],
+q7ex:"我 去 ___ 看书 。",
+q7:[["我 送 给 朋友 一 个 生日 ___ 。","礼物"],["周末 我 在 家 ___ 房间 。","打扫"],["这 个 手机 很 ___ ， 我 想 买 。","便宜"],["他 ___ 了 ， 今天 不 能 来 上课 。","感冒"],["我们 星期六 ___ 去 海边 吧 。","一起"]],
+q8:[["我 每天 六 点 （ qǐchuáng ） 。","起床"],["我 的 （ lǎoshī ） 是 中国人 。","老师"],["今天 （ tiānqì ） 很 好 。","天气"],["我 喜欢 吃 （ shuǐguǒ ） 。","水果"],["我 用 （ shǒujī ） 给 妈妈 打 电话 。","手机"]],
+q9ex:"今天 是 星期六 ， 我 不 上课 。",
+q9:["吃 完 早饭 以后 ， 我 先 打扫 房间 。","晚上 我 做 作业 ， 十 点 睡觉 。","我 早上 七 点 起床 ， 然后 吃 早饭 。","下午 我 和 朋友 一起 去 海边 踢 足球 。","中午 我 帮 妈妈 做饭 。"],
+q9k:"C → A → E → D → B",
+q10:{zh:"根据提示词，用汉字写一篇 80 到 100 个字的短文，说一说你的一天。提示词：起床、上课、汉语、先……然后、朋友",en:"Using the hint words, write 80–100 characters about your day. Hint words: 起床, 上课, 汉语, 先……然后, 朋友",sw:"Kwa kutumia maneno haya, andika herufi 80–100 kuhusu siku yako. Maneno: 起床, 上课, 汉语, 先……然后, 朋友"},
+model:"我每天早上六点起床，先刷牙洗脸，然后吃早饭。七点我从家去学校。我们八点上课，下午两点半下课。我最喜欢汉语课，因为汉语很有意思。下课以后我和朋友一起踢足球。晚上我先做作业，然后看电视，十点睡觉。我觉得我的学校生活很开心。"};
+function RB(str){return str.split(" ").map(function(k){if(k==="___")return '<span style="display:inline-block;min-width:54px;border-bottom:1.5px solid currentColor">&nbsp;</span>';var blank=k.charAt(0)==="*";if(blank)k=k.slice(1);var p=PYD[k];return p?'<ruby>'+esc(k)+'<rt>'+(blank?'<span style="letter-spacing:1px">______</span>':esc(p))+'</rt></ruby>':esc(k)}).join(" ")}
+function vReal(){
+ var r=rec();if(!r)return needSign();
+ var m=r.real,ans=(m&&m.ans)||{},g=!!m,L3=function(a,b,c){return S.lang==="zh"?a:S.lang==="sw"?c:b},ln='<div style="border-bottom:1px solid #999;height:34px"></div>',Z='class="hz rz" style="white-space:normal;font-size:19px;line-height:2.5"';
+ var h='<h2>'+esc(t("real"))+' '+printBtn()+'</h2>'+paperHead("Form Two · 026 Chinese Language · Exam-format mock · 2:30 hours · 100 marks · 10 questions · Answer ALL questions")+
+ '<div class="card mut noprint">'+L3("这套卷子按 Kiponda 老师提供的中二试卷格式出题：2 小时 30 分钟、10 道题、三部分（15 + 70 + 15 分），没有听力，汉字上面印有拼音。正式考试是手写的，请打印后用笔作答；第一部分也可以在屏幕上做，自动评分。","This paper follows the Form Two paper supplied by the Kiponda teacher: 2 hours 30 minutes, 10 questions in three parts (15 + 70 + 15 marks), no listening, pinyin printed above the characters. The real exam is handwritten, so print it and answer in pen; Part 1 can also be done on screen and is marked automatically.","Karatasi hii inafuata karatasi ya Kidato cha Pili iliyotolewa na mwalimu wa Kiponda: saa 2 na dakika 30, maswali 10 katika sehemu tatu (alama 15 + 70 + 15), bila kusikiliza, pinyin imeandikwa juu ya herufi. Mtihani halisi huandikwa kwa mkono, kwa hiyo chapisha na ujibu kwa kalamu; Sehemu ya 1 inaweza kufanywa kwenye skrini.")+'</div>';
+ if(m)h+='<div class="card noprint"><span class="score">I: '+m.p1+' / 15'+(m.p23!=null?' · II + III: '+m.p23+' / 85 · '+(m.p1+m.p23)+' / 100':'')+'</span><div class="mut">'+esc(t("wrongNote"))+'</div><div class="tonly row" style="margin-top:8px"><label>II (0–70) <input type="number" id="rb" min="0" max="70" style="width:80px" value="'+(m.p2!=null?m.p2:"")+'"></label><label>III (0–15) <input type="number" id="rc" min="0" max="15" style="width:80px" value="'+(m.p3!=null?m.p3:"")+'"></label><button class="btn sm" data-act="rmark">'+esc(t("save"))+'</button><button class="btn sec sm" data-act="rereal">'+esc(t("redo"))+'</button></div></div>';
+ h+='<div class="card"><h3 style="margin-top:0">第一部分 · PART 1 (15)</h3><b>一.</b> '+L3("选出正确答案。（10 分）","Choose the correct answer. (10 marks)","Chagua jibu sahihi. (alama 10)")+
+ RM.q1.map(function(x,i){var v=ans["a"+i],cls="q"+(g?(v===x[2]?" right":" wrong"):"");return '<div class="'+cls+'"><div class="stem" '+Z+'>'+(i+1)+'. '+RB(x[0])+'</div><div class="opts">'+x[1].map(function(o,j){return '<label '+Z+'><input type="radio" name="ra'+i+'" value="'+j+'"'+(v===j?" checked":"")+'><span>'+"ABCD"[j]+'. '+RB(o)+'</span></label>'}).join("")+'</div></div>'}).join("")+
+ '<div class="q"><b>二.</b> '+L3("把 A 栏的问题和 B 栏的回答配对。（5 分）","Match each question in Column A with its answer in Column B. (5 marks)","Oanisha kila swali la Safu A na jibu lake la Safu B. (alama 5)")+'<div class="tw"><table><tr><th>A</th><th style="width:80px"></th><th>B</th></tr>'+
+ RM.q2b.map(function(bq,j){var a=j===0?RM.q2ex[0]:RM.q2a[j-1],i=j-1,v=ans["m"+i],bad=g&&j>0&&j<=5&&v!==RM.q2k[i];
+  return '<tr><td '+Z+(bad?' data-bad="1"':'')+'>'+(j===0?"例 ":j<=5?j+". ":"")+(j<=5?RB(a):"")+'</td><td>'+(j===0?"G":j<=5?'<select name="rm'+i+'"><option value="">—</option>'+"ABCDEFG".split("").map(function(c,k){return '<option value="'+k+'"'+(v===k?" selected":"")+'>'+c+'</option>'}).join("")+'</select>':"")+'</td><td '+Z+'>'+"ABCDEFG"[j]+'. '+RB(bq)+'</td></tr>'}).join("")+'</table></div></div>'+(m?"":'<button class="btn sm noprint" data-act="subreal">'+esc(t("submit"))+' I</button>')+'</div>';
+ h+='<div class="card"><h3 style="margin-top:0">第二部分 · PART 2 (70)</h3><div class="mut noprint">'+L3("在纸上作答。每题 10 分。","Answer on paper. 10 marks each.","Jibu kwenye karatasi. Alama 10 kila swali.")+'</div>'+
+ '<div class="q"><b>三.</b> '+L3("把词语排成正确的句子。","Re-arrange the words to make correct sentences.","Panga maneno ili kuunda sentensi sahihi.")+RM.q3.map(function(x,i){return '<div '+Z+'>'+(i+1)+'. '+x[0].split(" / ").map(function(k){return RB(k)}).join(" &nbsp;/&nbsp; ")+'</div>'+ln}).join("")+'</div>'+
+ '<div class="q"><b>四.</b> '+L3("给短文中没有拼音的汉字标注拼音。","Write the pinyin above the characters that have none.","Andika pinyin juu ya herufi zisizo na pinyin.")+'<div class="passage" '+Z+'>'+RB(RM.q4)+'</div></div>'+
+ '<div class="q"><b>五.</b> '+L3("选择正确的汉字填空。","Choose the correct character to complete the sentence.","Chagua herufi sahihi kukamilisha sentensi.")+RM.q5.map(function(x,i){return '<div '+Z+'>'+(i+1)+'. '+RB(x[0])+' （'+esc(x[1])+'）</div>'}).join("")+'</div>'+
+ '<div class="q"><b>六.</b> '+L3("用括号里的词重写句子。","Rewrite each sentence using the word in brackets.","Andika upya kila sentensi ukitumia neno lililo kwenye mabano.")+RM.q6.map(function(x,i){return '<div '+Z+'>'+(i+1)+'. '+RB(x[0])+' （'+RB(x[1])+'）</div>'+ln}).join("")+'</div>'+
+ '<div class="q"><b>七.</b> '+L3("选择合适的词填空。","Fill in the blanks with the words given.","Jaza nafasi kwa maneno uliyopewa.")+'<div class="passage" '+Z+'>'+RM.q7bank.map(function(k){return RB(k)}).join(" ， ")+'</div><div '+Z+'>例. '+RB(RM.q7ex)+' （图书馆）</div>'+RM.q7.map(function(x,i){return '<div '+Z+'>'+(i+1)+'. '+RB(x[0])+'</div>'}).join("")+'</div>'+
+ '<div class="q"><b>八.</b> '+L3("根据拼音写汉字。","Write the characters for the pinyin given.","Andika herufi kwa pinyin uliyopewa.")+RM.q8.map(function(x,i){return '<div '+Z+'>'+(i+1)+'. '+RB(x[0])+'</div>'}).join("")+'</div>'+
+ '<div class="q"><b>九.</b> '+L3("把句子排成一篇通顺的短文，用字母写出顺序。第一句已给出。","Put the sentences in order to make a logical passage; write the letters. The first sentence is given.","Panga sentensi ili kuunda kifungu chenye mantiki; andika herufi. Sentensi ya kwanza imetolewa.")+'<div '+Z+'>F. '+RB(RM.q9ex)+'</div>'+RM.q9.map(function(x,i){return '<div '+Z+'>'+"ABCDE"[i]+'. '+RB(x)+'</div>'}).join("")+'<div>F → ___ → ___ → ___ → ___ → ___</div></div></div>';
+ h+='<div class="card"><h3 style="margin-top:0">第三部分 · PART 3 (15)</h3><b>十.</b> '+esc(RM.q10.zh)+'<div>'+esc(RM.q10.en)+'</div><div class="mut">'+esc(RM.q10.sw)+'</div></div>';
+ h+='<div class="key card"><h3>'+esc(t("key"))+'</h3><div><b>一</b> '+RM.q1.map(function(x,i){return (i+1)+"."+"ABCD"[x[2]]}).join("  ")+'</div><div><b>二</b> '+RM.q2k.map(function(k,i){return (i+1)+"."+"ABCDEFG"[k]}).join("  ")+'</div><div><b>三</b> (2 each) '+RM.q3.map(function(x,i){return (i+1)+". "+esc(x[1])}).join("  ")+'</div><div><b>四</b> (1 per character) 打算 dǎsuàn · 准备 zhǔnbèi · 游泳 yóuyǒng · 中午 zhōngwǔ · 开心 kāixīn</div><div><b>五</b> (2 each) '+RM.q5.map(function(x,i){return (i+1)+". "+x[2]}).join("  ")+'</div><div><b>六</b> (2 each) '+RM.q6.map(function(x,i){return (i+1)+". "+esc(x[2])}).join("  ")+'</div><div><b>七</b> (2 each) '+RM.q7.map(function(x,i){return (i+1)+". "+x[1]}).join("  ")+'</div><div><b>八</b> (2 each) '+RM.q8.map(function(x,i){return (i+1)+". "+x[1]}).join("  ")+'</div><div><b>九</b> (2 each) F → '+RM.q9k+'</div><h3>十 · 15</h3><div>Content 6 (uses the hint words and covers the whole day) · Language 6 (word order, 先……然后, time before the verb) · Form 3 (80–100 characters, correct characters and punctuation).</div><div class="passage" style="font-size:16px">'+esc(RM.model)+'</div><div class="mut">CSV: real_p1 = Part 1 (/15); real_p23 = Parts 2 + 3 (/85).</div></div>';
+ return h;
+}
+
 function tick(){
  clearInterval(timerInt);var el=$("#timer");if(!el||!timerEnd)return;
  timerInt=setInterval(function(){var el=$("#timer");if(!el){clearInterval(timerInt);return}var s=Math.max(0,Math.round((timerEnd-Date.now())/1000));el.textContent=("0"+Math.floor(s/60)).slice(-2)+":"+("0"+s%60).slice(-2);el.classList.toggle("low",s<600)},1000);
@@ -443,11 +505,11 @@ function vSurvey(){
  return h;
 }
 
-var COLS=["school","id","mode","diag_form_pre","diag_pre","diag_post","mock_mode","mock_max","mock_I","mock_II","mock_III","mock_IV","mock_V","mock_auto","writing","mock_total","pre1","pre2","pre3","pre4","pre5","pre6","pre7","pre8","post1","post2","post3","post4","post5","post6","post7","post8","dev","hrs","hard","best","change","help"];
+var COLS=["school","id","mode","diag_form_pre","diag_pre","diag_post","mock_mode","mock_max","mock_I","mock_II","mock_III","mock_IV","mock_V","mock_auto","writing","mock_total","pre1","pre2","pre3","pre4","pre5","pre6","pre7","pre8","post1","post2","post3","post4","post5","post6","post7","post8","dev","hrs","hard","best","change","help","real_p1","real_p23"];
 function rowOf(r){var m=r.mock||{},s=m.secs||[],p=r.pre||{},q=r.post||{};
  var a=[r.school,r.id,{m1:"own_device",m2:"whole_class",m3:"print"}[r.mode]||"",r.diag?r.diag.form||"A":"",r.diag?r.diag.score:"",r.diag2?r.diag2.score:"",m.mode||(r.mock?"full":""),r.mock?(m.max||92)+8:"",s[0],s[1],s[2],s[3],s[4],m.auto,m.wmark,(m.auto!=null&&m.wmark!=null)?m.auto+m.wmark:""];
  for(var i=1;i<=8;i++)a.push(p["q"+i]);for(i=1;i<=8;i++)a.push(q["q"+i]);
- a.push(p.dev,p.hrs,p.hard,q.best,q.change,q.help);return a.map(function(x){return x==null?"":x})}
+ a.push(p.dev,p.hrs,p.hard,q.best,q.change,q.help,r.real?r.real.p1:"",r.real&&r.real.p23!=null?r.real.p23:"");return a.map(function(x){return x==null?"":x})}
 function vResults(){
  var ks=Object.keys(RECS).sort();
  var h='<h2>'+esc(t("results"))+'</h2><div class="card row noprint"><button class="btn" data-act="csv">CSV</button><button class="btn sec" data-act="json">JSON</button>'+printBtn()+'<span class="mut">'+ks.length+' records on this device</span></div>'+
@@ -472,6 +534,9 @@ document.addEventListener("click",function(e){
  else if(a==="subdiag"){var IT=el.dataset.f==="A"?DIAG:DIAGB,ans=collect("d",IT.length),sc=0;IT.forEach(function(it,i){if(ans[i]===it.a)sc++});r[el.dataset.k]={form:el.dataset.f,ans:ans,score:sc,ts:Date.now()};saveRecs();render()}
  else if(a==="dwave"){sset("f2x:dwave",el.dataset.w);render()}
  else if(a==="rediag"){delete r[el.dataset.k];saveRecs();render()}
+ else if(a==="subreal"){var A={},s1=0;RM.q1.forEach(function(x,i){var e2=document.querySelector('input[name="ra'+i+'"]:checked');A["a"+i]=e2?+e2.value:null;if(A["a"+i]===x[2])s1++});RM.q2k.forEach(function(k,i){var s2=document.querySelector('select[name="rm'+i+'"]');A["m"+i]=s2&&s2.value!==""?+s2.value:null;if(A["m"+i]===k)s1++});r.real={ans:A,p1:s1,p23:null,ts:Date.now()};saveRecs();render()}
+ else if(a==="rmark"){var vb=parseFloat($("#rb").value),vc=parseFloat($("#rc").value);if(!(vb>=0&&vb<=70&&vc>=0&&vc<=15))return;r.real.p2=vb;r.real.p3=vc;r.real.p23=vb+vc;saveRecs();render()}
+ else if(a==="rereal"){delete r.real;saveRecs();render()}
  else if(a==="timer"){timerEnd=Date.now()+((r.mockmode||"short")==="short"?40:90)*60000;tick()}
  else if(a==="mmode"){r.mockmode=el.dataset.m;saveRecs();render()}
  else if(a==="submock"){var all={},secs=[],auto=0;var sh=(r.mockmode||"short")==="short",mx=0;MOCK.forEach(function(s){var its=sh&&s.id!=="V"?s.items.slice(0,5):s.items,an=collect("m"+s.id,its.length),sc=0;its.forEach(function(it,i){all[s.id+i]=an[i];if(an[i]===it.a)sc+=s.marks});secs.push(sc);auto+=sc;mx+=its.length*s.marks});
