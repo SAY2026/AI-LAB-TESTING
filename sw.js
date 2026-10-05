@@ -1,5 +1,5 @@
 /* SAY AI Lab offline cache. Bump VERSION whenever the pages change. */
-var VERSION = "say-v4";
+var VERSION = "say-v5";
 var ASSETS = ["safari-ya-kichina.html", "safari.webmanifest", "safari-icon-192.png", "safari-icon-512.png", "safari-icon-180.png", "f2-online.html", "f4-online.html"];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(ASSETS); }).then(function () { return self.skipWaiting(); }));

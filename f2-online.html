@@ -283,7 +283,7 @@ var OPENQ=[["change","这三次复习以后，你学汉语的方法有什么变�
 
 /* UI strings */
 var UI={
-home:["开始","Start","Anza"],plan:["三小时集训方案","3-hour session plan","Mpango wa kipindi cha saa 3"],review:["复习","Revision","Marudio"],diag:["水平测试","Diagnostic","Jaribio la kiwango"],mock:["模拟卷四（含听力）","Mock 4 (with listening)","Mtihani 4 (na kusikiliza)"],real:["国考格式模拟卷","Exam-format mock","Mtihani kwa muundo halisi"],survey:["问卷","Questionnaire","Dodoso"],results:["成绩（老师）","Results (teacher)","Matokeo (mwalimu)"],
+home:["开始","Start","Anza"],plan:["三小时集训方案","3-hour session plan","Mpango wa kipindi cha saa 3"],review:["复习","Revision","Marudio"],diag:["水平测试","Diagnostic","Jaribio la kiwango"],mock:["模拟卷四（含听力）","Mock 4 (with listening)","Mtihani 4 (na kusikiliza)"],real:["国考格式模拟卷","Exam-format mock","Mtihani kwa muundo halisi"],tpack:["老师材料","Teacher pack","Nyaraka za mwalimu"],survey:["问卷","Questionnaire","Dodoso"],results:["成绩（老师）","Results (teacher)","Matokeo (mwalimu)"],
 mean:["释义","meanings","maana"],teacherOn:["老师模式：开","Teacher mode: ON","Hali ya mwalimu: IMEWASHWA"],teacherOff:["老师模式","Teacher mode","Hali ya mwalimu"],
 print:["🖨 打印","🖨 Print","🖨 Chapisha"],submit:["交卷","Submit","Wasilisha"],save:["保存","Save","Hifadhi"],saved:["已保存 ✓","Saved ✓","Imehifadhiwa ✓"],
 school:["学校","School","Shule"],sid:["学生编号（不写名字）","Student code (no names)","Namba ya mwanafunzi (bila jina)"],mode:["学习方式","How you study here","Unavyojifunza hapa"],
@@ -322,15 +322,15 @@ function say(txt,times){
 function alertBox(m){var b=document.createElement("div");b.className="card";b.style.cssText="position:fixed;left:16px;right:16px;bottom:16px;z-index:9;border-color:#8a5a00";b.textContent=m;document.body.appendChild(b);setTimeout(function(){b.remove()},4000)}
 function sayBtn(txt,n){return '<button class="say" data-say="'+esc(txt)+'" data-n="'+(n||1)+'" aria-label="play">▶</button>'}
 /* ================= RENDER ================= */
-var TABS=["home","review","diag","real","mock","survey","plan","results"];
+var TABS=["home","review","diag","real","survey","plan","tpack","results"];
 function nav(){
- $("#nav").innerHTML=TABS.map(function(k){if(k==="results"&&!TEACH)return"";return '<button data-view="'+k+'" class="'+(VIEW===k?"on":"")+'">'+esc(t(k))+'</button>'}).join("");
+ $("#nav").innerHTML=TABS.map(function(k){if((k==="results"||k==="tpack")&&!TEACH)return"";return '<button data-view="'+k+'" class="'+(VIEW===k?"on":"")+'">'+esc(t(k))+'</button>'}).join("");
  $("#who").textContent=CUR?(CUR.school+" · "+CUR.id):"";
  $("#lmean").textContent=t("mean");$("#tbtn").textContent=TEACH?t("teacherOn"):t("teacherOff");
  document.body.classList.toggle("hide-py",!S.py);document.body.classList.toggle("hide-mean",!S.mean);document.body.classList.toggle("teacher",TEACH);
  document.documentElement.lang=S.lang;
 }
-function render(){nav();var h={home:vHome,plan:vPlan,review:vReview,diag:vDiag,real:vReal,mock:vMock,survey:vSurvey,results:vResults}[VIEW]();$("#app").innerHTML=h;window.scrollTo(0,0);if(VIEW==="mock")tick()}
+function render(){nav();var h={home:vHome,plan:vPlan,review:vReview,diag:vDiag,real:vReal,tpack:vTpack,mock:vMock,survey:vSurvey,results:vResults}[VIEW]();$("#app").innerHTML=h;window.scrollTo(0,0);if(VIEW==="mock")tick()}
 function printBtn(){return '<button class="btn sec sm noprint" data-act="print">'+t("print")+'</button>'}
 function needSign(){return '<div class="card">'+esc(t("need"))+' <button class="btn sm" data-view="home">'+esc(t("home"))+'</button></div>'}
 
@@ -341,8 +341,8 @@ function vHome(){
  '<label>'+esc(t("mode"))+'<br><select id="fmode">'+["m1","m2","m3"].map(function(m){return '<option value="'+m+'"'+(CUR&&CUR.mode===m?" selected":"")+'>'+esc(t(m))+'</option>'}).join("")+'</select></label>'+
  '<button class="btn" data-act="signin">'+esc(t("home"))+' →</button></div></div>';
  var r=rec();
- if(r){h+='<div class="card"><b>'+esc(CUR.school+" · "+CUR.id)+'</b><div class="tw"><table><tr><th>'+esc(t("survey")+" "+t("pre"))+'</th><th>'+esc(t("diag"))+'</th><th>'+esc(t("mock"))+'</th><th>'+esc(t("survey")+" "+t("post"))+'</th></tr><tr><td>'+(r.pre?"✓":"—")+'</td><td>'+(r.diag?r.diag.score+" / 20":"—")+" → "+(r.diag2?r.diag2.score+" / 20":"—")+'</td><td>'+(r.mock?r.mock.auto+" / "+(r.mock.max||92)+(r.mock.wmark!=null?" + "+r.mock.wmark+" / 8":""):"—")+'</td><td>'+(r.post?"✓":"—")+'</td></tr></table></div></div>'}
- h+='<div class="card mut">'+{zh:"顺序：① 前测问卷 → ② 水平测试（前）→ ③ 复习 → ④ 水平测试（后）→ ⑤ 模拟考试 → ⑥ 后测问卷。成绩只保存在这台设备上，老师在“成绩”页导出。",en:"Order: ① PRE questionnaire → ② diagnostic (PRE) → ③ revision → ④ diagnostic (POST) → ⑤ mock exam → ⑥ POST questionnaire. Results are saved on this device only; the teacher exports them from the Results page.",sw:"Mpangilio: ① dodoso la KABLA → ② jaribio la kiwango (KABLA) → ③ marudio → ④ jaribio la kiwango (BAADA) → ⑤ mtihani wa majaribio → ⑥ dodoso la BAADA. Matokeo huhifadhiwa kwenye kifaa hiki tu; mwalimu huyapakua kwenye ukurasa wa Matokeo."}[S.lang]+'</div>';
+ if(r){h+='<div class="card"><b>'+esc(CUR.school+" · "+CUR.id)+'</b><div class="tw"><table><tr><th>'+esc(t("survey")+" "+t("pre"))+'</th><th>'+esc(t("diag"))+'</th><th>'+esc(t("real"))+'</th><th>'+esc(t("survey")+" "+t("post"))+'</th></tr><tr><td>'+(r.pre?"✓":"—")+'</td><td>'+(r.diag?r.diag.score+" / 20":"—")+" → "+(r.diag2?r.diag2.score+" / 20":"—")+'</td><td>'+(r.real?"I: "+r.real.p1+" / 15"+(r.real.p23!=null?" · II+III: "+r.real.p23+" / 85":""):"—")+'</td><td>'+(r.post?"✓":"—")+'</td></tr></table></div></div>'}
+ h+='<div class="card mut">'+{zh:"顺序：① 前测问卷 → ② 水平测试（前）→ ③ 复习 → ④ 水平测试（后）→ ⑤ 国考格式模拟卷 → ⑥ 后测问卷。成绩只保存在这台设备上，老师在“成绩”页导出。",en:"Order: ① PRE questionnaire → ② diagnostic (PRE) → ③ revision → ④ diagnostic (POST) → ⑤ exam-format mock → ⑥ POST questionnaire. Results are saved on this device only; the teacher exports them from the Results page.",sw:"Mpangilio: ① dodoso la KABLA → ② jaribio la kiwango (KABLA) → ③ marudio → ④ jaribio la kiwango (BAADA) → ⑤ mtihani kwa muundo halisi → ⑥ dodoso la BAADA. Matokeo huhifadhiwa kwenye kifaa hiki tu; mwalimu huyapakua kwenye ukurasa wa Matokeo."}[S.lang]+'</div>';
  return h;
 }
 
@@ -483,6 +483,31 @@ function vReal(){
  return h;
 }
 
+/* ===== Teacher pack: teacher questionnaire, handover log, 7-day follow-up, headmaster's agreement ===== */
+var TQ=[["SE","没有外来帮助，我也能给学生上一节完整的复习课。","I can run a full revision session for my students without outside help.","Ninaweza kuendesha kipindi kizima cha marudio kwa wanafunzi wangu bila msaada wa nje."],
+["SE","我能判断 AI 出的题是否符合我的大纲。","I can judge whether a test question made by AI is correct for my syllabus.","Ninaweza kuamua kama swali lililotungwa na AI ni sahihi kwa muhtasari wangu."],
+["TAM","在线复习页面比只用纸质材料更能帮助我的学生。","Online revision pages help my students learn more than paper alone.","Kurasa za marudio mtandaoni zinawasaidia wanafunzi wangu kujifunza zaidi kuliko karatasi pekee."],
+["TAM","这些页面在课堂上用起来很容易。","These pages are easy for me to use in class.","Kurasa hizi ni rahisi kwangu kuzitumia darasani."],
+["DA","我能自己修改材料，让它适合我的班。","I can change the materials myself to fit my own class.","Ninaweza kubadilisha maudhui mwenyewe ili yalingane na darasa langu."],
+["DA","这个月我打算给学生做新的练习材料。","I plan to make new practice material for my students this month.","Ninapanga kutengeneza mazoezi mapya kwa wanafunzi wangu mwezi huu."],
+["CR","没有电、网络或设备的时候，我仍然能上这节课。","When there is no power, network or device, I can still run the session.","Umeme, mtandao au kifaa kikikosekana, bado ninaweza kuendesha kipindi."],
+["CR","课堂上出了问题，我会想别的办法继续上。","When something fails in class, I find another way and continue.","Jambo likishindikana darasani, ninatafuta njia nyingine na kuendelea."]];
+var HBLK=["登记与前测问卷 · Sign-in and PRE questionnaire","水平测试（前）· Diagnostic PRE","复习上 · Revision A","复习下 · Revision B","水平测试（后）· Diagnostic POST","国考格式模拟卷 · Exam-format mock","后测问卷与导出 · POST questionnaire and export"];
+var FUQ=["集训之后你自己带学生用过复习页面吗？几次、多少学生？ · Since the session, have you used the revision page with students on your own? How many times, with how many students? · Tangu kipindi, umetumia ukurasa wa marudio na wanafunzi peke yako? Mara ngapi, wanafunzi wangapi?","有没有带没参加的学生做完整的国考格式模拟卷？哪一天？ · Did you run the full exam-format mock with the students who were not at the session? On what date? · Je, ulifanya mtihani kamili kwa muundo halisi na wanafunzi ambao hawakuhudhuria? Tarehe gani?","你自己打印、修改或添加过什么？ · Did you print, change or add anything yourself? What? · Je, ulichapisha, kubadilisha au kuongeza chochote mwenyewe? Nini?","什么让你做不下去或变慢？ · What stopped you or slowed you down? · Nini kilikuzuia au kukuchelewesha?","下次你会怎么改，接下来想学什么？ · What would you do differently next time, and what do you want to learn next? · Ungefanya nini tofauti wakati ujao, na unataka kujifunza nini baadaye?"];
+var TP=sget("f2x:tpack",{}),TPS=null,TPW="pre";
+function tpk(){var s=TPS||(CUR&&CUR.school)||SCHOOLS[0][0];TPS=s;if(!TP[s])TP[s]={pre:{},post:{},log:{},fu:{}};return TP[s]}
+function vTpack(){
+ var d=tpk(),w=d[TPW],lg=d.log,fu=d.fu,i;
+ var h='<h2>'+esc(t("tpack"))+' '+printBtn()+'</h2><div class="card row noprint"><label>'+esc(t("school"))+' <select id="tps">'+SCHOOLS.map(function(s){return '<option'+(s[0]===TPS?" selected":"")+'>'+s[0]+'</option>'}).join("")+'</select></label><button class="btn sm" data-act="tpsave">'+esc(t("save"))+'</button><button class="btn sec sm" data-act="tpjson">JSON</button><span id="tpmsg" class="ok"></span></div>';
+ h+='<div class="card survey"><h3 style="margin-top:0">A · 老师问卷 · Teacher questionnaire · Dodoso la mwalimu</h3><div class="row noprint" style="margin-bottom:8px"><button class="btn '+(TPW==="pre"?"":"sec")+' sm" data-act="tpw" data-w="pre">'+esc(t("pre"))+'</button><button class="btn '+(TPW==="post"?"":"sec")+' sm" data-act="tpw" data-w="post">'+esc(t("post"))+'</button></div><div class="paper-head">School / Shule: __________ Code / Namba: ______ □ BEFORE / KABLA / 前 □ AFTER / BAADA / 后</div><div class="row"><label>Code / Namba <input type="text" id="tq_code" style="width:110px" value="'+esc(w.code||"")+'"></label></div><div class="mut">'+esc(SCALE.zh)+'<br>'+esc(SCALE.en)+'<br>'+esc(SCALE.sw)+'</div><div class="tw"><table class="sv">'+TQ.map(function(q,i){return '<tr><td>'+(i+1)+'. '+tri(q.slice(1))+'</td><td style="width:210px">'+likert("tq"+i,w["q"+(i+1)])+'</td></tr>'}).join("")+'<tr><td colspan="2">'+(TPW==="post"?"":'<span class="mut">('+esc(t("post"))+') </span>')+'接下来七天你打算怎么用这些材料？ · What will you do with these materials in the next seven days? · Utafanya nini na maudhui haya katika siku saba zijazo?<br><input type="text" id="tq_open" style="width:100%" value="'+esc(w.open||"")+'"></td></tr></table></div></div>';
+ h+='<div class="card"><h3 style="margin-top:0">B · 带教记录表 · Handover log</h3><div class="row">'+[["date","日期 Date"],["tcode","老师编号 Teacher code"],["present","到场学生 Students present"],["devices","可用设备 Devices working"],["by","记录人 Filled by"]].map(function(f){return '<label>'+f[1]+' <input type="text" id="lg_'+f[0]+'" style="width:120px" value="'+esc(lg[f[0]]||"")+'"></label>'}).join("")+'</div><div class="tw"><table><tr><th>环节 Block</th><th style="width:90px">李 Li (min)</th><th style="width:90px">老师 Teacher (min)</th><th>老师主动做了什么 · What the teacher did without being asked</th></tr>'+HBLK.map(function(b,i){return '<tr><td>'+esc(b)+'</td><td><input type="number" id="lg_a'+i+'" min="0" style="width:70px" value="'+esc(lg["a"+i]!=null?lg["a"+i]:"")+'"></td><td><input type="number" id="lg_b'+i+'" min="0" style="width:70px" value="'+esc(lg["b"+i]!=null?lg["b"+i]:"")+'"></td><td><input type="text" id="lg_c'+i+'" style="width:100%" value="'+esc(lg["c"+i]||"")+'"></td></tr>'}).join("")+'</table></div><label>电、网络、设备的问题和解决办法 · Problems with power, network or devices, and how they were solved<br><input type="text" id="lg_prob" style="width:100%" value="'+esc(lg.prob||"")+'"></label></div>';
+ h+='<div class="card"><h3 style="margin-top:0">C · 七天回访 · Seven-day follow-up · Ufuatiliaji wa siku saba</h3>'+FUQ.map(function(q,i){return '<div class="q">'+(i+1)+'. '+esc(q)+'<br><input type="text" id="fu_'+i+'" style="width:100%" value="'+esc(fu["q"+i]||"")+'"></div>'}).join("")+'</div>';
+ h+='<div class="card" style="break-before:page"><h3 style="margin-top:0">D · 校长同意书 · Headmaster\'s agreement · Idhini ya Mkuu wa Shule</h3><p>I agree that SAY Foundation may hold an after-school Chinese revision session for Form ___ students at this school on ____________, and may keep anonymous results (student codes, no names) for programme evaluation and research.</p><p>Ninakubali SAY Foundation ifanye kipindi cha marudio ya Kichina baada ya masomo kwa wanafunzi wa Kidato cha ___ katika shule hii tarehe ____________, na ihifadhi matokeo yasiyo na majina (namba za wanafunzi tu) kwa ajili ya tathmini ya programu na utafiti.</p><p>我同意 SAY Foundation 于 ____________ 在本校为中___学生举办课后汉语复习集训，并保留匿名成绩（只有学生编号，没有姓名）用于项目评估和研究。</p><p style="margin-top:26px">School / Shule: ____________________ &nbsp; Name / Jina: ____________________</p><p>Signature / Sahihi: ____________________ &nbsp; Date / Tarehe: ______________</p></div>';
+ return h;
+}
+function tpCollect(){var d=tpk(),w=d[TPW],lg=d.log,fu=d.fu,e;TQ.forEach(function(q,i){e=document.querySelector('input[name="tq'+i+'"]:checked');if(e)w["q"+(i+1)]=+e.value});w.code=$("#tq_code").value;w.open=$("#tq_open").value;w.ts=Date.now();
+ ["date","tcode","present","devices","by","prob"].forEach(function(k){lg[k]=$("#lg_"+k).value});HBLK.forEach(function(b,i){lg["a"+i]=$("#lg_a"+i).value;lg["b"+i]=$("#lg_b"+i).value;lg["c"+i]=$("#lg_c"+i).value});FUQ.forEach(function(q,i){fu["q"+i]=$("#fu_"+i).value});sset("f2x:tpack",TP)}
+
 function tick(){
  clearInterval(timerInt);var el=$("#timer");if(!el||!timerEnd)return;
  timerInt=setInterval(function(){var el=$("#timer");if(!el){clearInterval(timerInt);return}var s=Math.max(0,Math.round((timerEnd-Date.now())/1000));el.textContent=("0"+Math.floor(s/60)).slice(-2)+":"+("0"+s%60).slice(-2);el.classList.toggle("low",s<600)},1000);
@@ -534,6 +559,9 @@ document.addEventListener("click",function(e){
  else if(a==="subdiag"){var IT=el.dataset.f==="A"?DIAG:DIAGB,ans=collect("d",IT.length),sc=0;IT.forEach(function(it,i){if(ans[i]===it.a)sc++});r[el.dataset.k]={form:el.dataset.f,ans:ans,score:sc,ts:Date.now()};saveRecs();render()}
  else if(a==="dwave"){sset("f2x:dwave",el.dataset.w);render()}
  else if(a==="rediag"){delete r[el.dataset.k];saveRecs();render()}
+ else if(a==="tpsave"){tpCollect();$("#tpmsg").textContent=t("saved")}
+ else if(a==="tpw"){tpCollect();TPW=el.dataset.w;render()}
+ else if(a==="tpjson"){tpCollect();download("f2_teacher_pack.json",JSON.stringify(TP,null,1),"application/json")}
  else if(a==="subreal"){var A={},s1=0;RM.q1.forEach(function(x,i){var e2=document.querySelector('input[name="ra'+i+'"]:checked');A["a"+i]=e2?+e2.value:null;if(A["a"+i]===x[2])s1++});RM.q2k.forEach(function(k,i){var s2=document.querySelector('select[name="rm'+i+'"]');A["m"+i]=s2&&s2.value!==""?+s2.value:null;if(A["m"+i]===k)s1++});r.real={ans:A,p1:s1,p23:null,ts:Date.now()};saveRecs();render()}
  else if(a==="rmark"){var vb=parseFloat($("#rb").value),vc=parseFloat($("#rc").value);if(!(vb>=0&&vb<=70&&vc>=0&&vc<=15))return;r.real.p2=vb;r.real.p3=vc;r.real.p23=vb+vc;saveRecs();render()}
  else if(a==="rereal"){delete r.real;saveRecs();render()}
@@ -556,13 +584,15 @@ document.addEventListener("change",function(e){
  r.mdraft=r.mdraft||{ans:{},w:""};if(n.charAt(0)==="m"&&e.target.type==="radio")r.mdraft.ans[n.slice(1)]=+e.target.value;saveRecs();
 });
 document.addEventListener("input",function(e){
+ if(e.target.id==="tps"&&VIEW==="tpack"){}
  if(e.target.id==="mw"){var r=rec();if(r&&!r.mock){r.mdraft=r.mdraft||{ans:{},w:""};r.mdraft.w=e.target.value;saveRecs()}var n=(e.target.value.match(/[一-鿿]/g)||[]).length;$("#wc").textContent=n+" 字"}
 });
 $("#lang").value=S.lang;$("#tpy").checked=S.py;$("#tmean").checked=S.mean;
+document.addEventListener("change",function(e){if(e.target.id==="tps"){tpCollect();TPS=e.target.value;render()}});
 $("#lang").onchange=function(){S.lang=this.value;sset("f2x:set",S);render()};
 $("#tpy").onchange=function(){S.py=this.checked;sset("f2x:set",S);nav()};
 $("#tmean").onchange=function(){S.mean=this.checked;sset("f2x:set",S);nav()};
-$("#tbtn").onclick=function(){if(TEACH){TEACH=false;if(VIEW==="results")VIEW="home";render();return}var p=window.prompt("PIN");if(p===TEACHER_PIN){TEACH=true;render()}};
+$("#tbtn").onclick=function(){if(TEACH){TEACH=false;if(VIEW==="results"||VIEW==="tpack")VIEW="home";render();return}var p=window.prompt("PIN");if(p===TEACHER_PIN){TEACH=true;render()}};
 try{speechSynthesis.getVoices()}catch(e){}
 render();
 </script>
