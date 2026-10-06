@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="sw" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>Jaribio la kupima kiwango · Level-finder test · 水平定位测试 · SAY AI Lab</title>
+<style>
+		@page { size: 8.27in 11.69in; margin-left: 0.5in; margin-right: 0.5in; margin-top: 0.47in; margin-bottom: 0.42in }
+		p { line-height: 115%; text-align: left; orphans: 2; widows: 2; margin-bottom: 0.1in; direction: ltr; background: transparent }
+		a:link { color: #0563c1; text-decoration: underline }
+	
+html{background:#e9f0ef}
+body{max-width:860px;margin:0 auto;padding:0 18px 70px;background:#fff;font-family:Arial,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;color:#111;-webkit-text-size-adjust:100%}
+#doc table{width:100%!important;max-width:100%;border-collapse:collapse}
+#doc td,#doc th{word-break:break-word;vertical-align:top}
+#doc p{margin-top:0}
+#doc td p{margin-top:0;margin-bottom:0.03in}
+#doc font[face]{font-family:inherit}
+#doc span[lang="zh-CN"] font{font-family:"Songti SC","SimSun","Noto Serif CJK SC","PingFang SC",serif}
+.tab{display:inline-block;width:2.4em}
+.kitnav{position:sticky;top:0;z-index:5;background:#0B5C63;color:#fff;padding:9px 14px;margin:0 -18px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:15px}
+.kitnav a,.kitnav button{color:#fff;background:transparent;text-decoration:none;border:1px solid rgba(255,255,255,.6);border-radius:7px;padding:6px 12px;font-size:15px;font-family:inherit;cursor:pointer}
+.kitnav .tt{flex:1;min-width:180px;font-weight:bold}
+.gate{max-width:420px;margin:60px auto;text-align:center;font-size:17px;line-height:1.6}
+.gate input{font-size:26px;width:150px;text-align:center;padding:8px;border:2px solid #0B5C63;border-radius:8px;letter-spacing:4px}
+.gate button{font-size:18px;padding:10px 22px;margin-left:8px;border:0;border-radius:8px;background:#0B5C63;color:#fff;cursor:pointer}
+.gate .err{color:#B3261E;min-height:1.5em}
+@media screen and (min-width:700px){#doc{zoom:1.18}}
+@media print{.kitnav,.gate{display:none!important}html{background:#fff}body{max-width:none;padding:0}#doc{zoom:0.9}}
+</style>
+</head>
+<body class="notranslate">
+<div class="kitnav"><a href="f2-kit.html">&larr; Kit</a><span class="tt">Jaribio la kupima kiwango · Level-finder test · 水平定位测试</span><button type="button" onclick="window.print()">Chapisha · Print · 打印</button></div>
+<main id="doc"><p style="line-height: 100%; margin-bottom: 0.02in">
+<font color="#0b5c63"><font face="Arial, serif"><font size="3" style="font-size: 13pt"><b>Jaribio
+la kupima kiwango · Level-finder test · </b></font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 13pt"><b>水平定位测试
+</b></font></font></span></font><font face="Arial, serif"><font size="3" style="font-size: 13pt"><b>·
+Form II Chinese</b></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0.06in"><font color="#555555"><font face="Arial, serif"><font size="2" style="font-size: 9pt">Maswali
+40 · dakika 30 · alama 40. Sehemu 1–3: zungushia herufi ya jibu
+sahihi. Kutoka rahisi hadi ngumu; fanya kadiri uwezavyo. Usiandike
+jina lako. · 40 questions · 30 minutes · 40 marks. Sections 1–3:
+circle the correct letter. From easy to hard; do as much as you can.
+Do not write your name.</font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0.07in"><font face="Arial, serif"><font size="2" style="font-size: 10pt"><b>Namba
+· Code: ____________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shule · School: ____________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tarehe
+· Date: ____________</b></font></font></p>
+<p style="line-height: 100%; margin-top: 0.04in; margin-bottom: 0.05in; background: #0b5c63">
+<font color="#ffffff">  <font face="Arial, serif"><font size="2" style="font-size: 9pt"><b>SEHEMU
+1 (1–10) · Sura ya 1–2 za kitabu · Textbook Chapters 1–2 ·
+</b></font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt"><b>课本第一、二章</b></font></font></span></font></font></p>
+<table width="698" cellpadding="1" cellspacing="0">
+	<col width="347"/>
+	<col width="347"/>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Zhège
+			___ nǐ qù nǎr le? — Wǒ qù le nǎinai jiā.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">1.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">这个
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">你去哪儿了？——我去了奶奶家。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">发音
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(fāyīn)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">假期
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jiàqī)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">声调
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(shēngdiào)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">结果
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jiéguǒ)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Zuò
+			gāotiě ___ zuò pǔtōng huǒchē kuài, yě hěn shūfu.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">6.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">坐高铁
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">坐普通火车快，也很舒服。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">被
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bèi)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">把
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bǎ)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">别
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bié)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">比
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bǐ)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Wǒ
+			xiǎng duō liànxí, ___ wǒ de Zhōngwén shuǐpíng.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">2.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">我想多练习，</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">我的中文水平。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">放弃
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(fàngqì)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">讨论
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(tǎolùn)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">请假
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(qǐngjià)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">提高
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(tígāo)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Shēngdiào
+			hěn nán, dànshì wǒ méiyǒu ___, měi tiān dōu jiānchí
+			liànxí.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">7.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">声调很难，但是我没有
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">，每天都坚持练习。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">发现
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(fāxiàn)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">放弃
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(fàngqì)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">进步
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jìnbù)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">决定
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(juédìng)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Wǒ
+			yǒu hěn duō péngyou, ___ yí ge shì Zhōngguó rén.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">3.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">我有很多朋友，</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">一个是中国人。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">其中
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(qízhōng)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">一起
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yìqǐ)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">已经
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yǐjīng)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">一边
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yìbiān)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Tā
+			yǐqián ___ měi tiān dōu chídào, lǎobǎn měi cì dōu shuō
+			tā.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">8.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">他以前
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">每天都迟到，老板每次都说他。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">几个
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jǐ
+			ge)<span class="tab"></span>B. </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">几点
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jǐ
+			diǎn)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">几乎
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jīhū)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">几岁
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jǐ
+			suì)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">___
+			xuésheng lái shuō, kǎoshì hěn zhòngyào.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">4.
+			 ___ </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">学生来说，考试很重要。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">从
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(cóng)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">把
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bǎ)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">对
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(duì)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">比
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bǐ)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Wǒ
+			bú zài jiā de shíhou, línjū huì bāng wǒ ___ háizi.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">9.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">我不在家的时候，邻居会帮我
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">孩子。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">吵架
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(chǎojià)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">迟到
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(chídào)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">习惯
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(xíguàn)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">照顾
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zhàogù)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Tā
+			zuò ___ kàn shū.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">5.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">他坐
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">看书。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">着
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zhe)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">的
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(de)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">得
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(de)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">地
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(de)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Wǒmen
+			shàng ge yuè ___ jiā le, xīn jiā lí gōngsī hěn jìn.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">10.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">我们上个月
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">家了，新家离公司很近。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">搬
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bān)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">吵
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(chǎo)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">擦
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(cā)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">贴
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(tiē)</font></font></p>
+		</td>
+	</tr>
+</table>
+<p style="line-height: 100%; margin-top: 0.04in; margin-bottom: 0.05in; background: #0b5c63">
+<font color="#ffffff">  <font face="Arial, serif"><font size="2" style="font-size: 9pt"><b>SEHEMU
+2 (11–20) · Sura ya 3–4 · Chapters 3–4 · </b></font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt"><b>第三、四章</b></font></font></span></font></font></p>
+<table width="698" cellpadding="1" cellspacing="0">
+	<col width="347"/>
+	<col width="347"/>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Duōduōmǎ
+			shì Tǎnsāngníyà de ___.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">11.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">多多马是坦桑尼亚的
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">渔业
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yúyè)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">经济
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jīngjì)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">首都
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(shǒudū)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">政府
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zhèngfǔ)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Yòng
+			tàiyángnéng fādiàn, kěyǐ jiǎnshǎo kōngqì ___.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">16.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">用太阳能发电，可以减少空气
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">环保
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(huánbǎo)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">污染
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(wūrǎn)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">健康
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jiànkāng)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">新闻
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(xīnwén)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Ānnà
+			de bàba cóng bā diǎn ___ jiǔ diǎn zài huāyuán lǐ
+			gōngzuò.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">12.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">安娜的爸爸从八点
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">九点在花园里工作。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">到
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(dào)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">在
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zài)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">离
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(lí)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">对
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(duì)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Mǎi
+			dōngxi shí, qǐng dài zìjǐ de ___, búyào yòng sùliàodài.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">17.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">买东西时，请带自己的
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">，不要用塑料袋。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">环保袋
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(huánbǎodài)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">太阳能
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(tàiyángnéng)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">发电站
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(fādiànzhàn)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">春联
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(chūnlián)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Dálèisīsàlāmǔ
+			shì wǒmen zuì dà de chéngshì, jīngjì hěn ___.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">13.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">达累斯萨拉姆是我们最大的城市，经济很
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">舒服
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(shūfu)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">温暖
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(wēnnuǎn)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">熟悉
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(shúxī)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">发达
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(fādá)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Lǎoshī,
+			yǒu ge dìfang wǒ bù dǒng, kěyǐ ___ yí biàn ma?</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">18.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">老师，有个地方我不懂，可以
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">一遍吗？</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">安装
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(ānzhuāng)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">减少
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jiǎnshǎo)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">重复
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(chóngfù)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">鼓励
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(gǔlì)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      — <font face="Arial, serif"><font size="1" style="font-size: 7pt">Nǐ
+			yào zhùyì shíjiān, bié chídào!  — Xièxie ___!</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">14.
+			 ——</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">你要注意时间，别迟到！——谢谢
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">！</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">约会
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yuēhuì)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">提醒
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(tíxǐng)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">报告
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bàogào)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">希望
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(xīwàng)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Zuòwán
+			zuòyè yǐhòu, qǐng ___ yíxià yǒu méiyǒu wèntí.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">19.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">做完作业以后，请
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">一下有没有问题。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">鼓励
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(gǔlì)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">检查
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jiǎnchá)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">宣布
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(xuānbù)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">增加
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zēngjiā)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Wǒ
+			zài bàngōngshì, ___ kāiwán huì.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">15.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">我在办公室，</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">开完会。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">特别
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(tèbié)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">一起
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yìqǐ)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">其中
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(qízhōng)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">刚刚
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(gānggāng)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Zài
+			xuéxí ___, tā hěn nǔlì.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">20.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">在学习
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">，他很努力。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">从
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(cóng)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">把
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bǎ)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">比
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bǐ)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">上
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(shàng)</font></font></p>
+		</td>
+	</tr>
+</table>
+<p style="line-height: 100%; margin-top: 0.04in; margin-bottom: 0.05in; background: #0b5c63">
+<font color="#ffffff">  <font face="Arial, serif"><font size="2" style="font-size: 9pt"><b>SEHEMU
+3 (21–30) · Sura ya 5–6 · Chapters 5–6 · </b></font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt"><b>第五、六章</b></font></font></span></font></font></p>
+<table width="698" cellpadding="1" cellspacing="0">
+	<col width="347"/>
+	<col width="347"/>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Xiǎo
+			Tùzi juédìng zài shēngrì nà tiān ___ yí ge shēngrì
+			wǎnhuì.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">21.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">小兔子决定在生日那天
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">一个生日晚会。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">举办
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jǔbàn)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">整理
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zhěnglǐ)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">实现
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(shíxiàn)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">支付
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zhīfù)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Wǒmen
+			yàome qù kàn diànyǐng, ___ qù hǎibiān, nǐ juédìng ba.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">26.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">我们要么去看电影，</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">去海边，你决定吧。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">要么
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yàome)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">所以
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(suǒyǐ)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">虽然
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(suīrán)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">不但
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(búdàn)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Shǒuxiān
+			dǎsǎo kètīng, ___ xǐ wǎn, zuìhòu dào lājī.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">22.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">首先打扫客厅，</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">洗碗，最后倒垃圾。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">其中
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(qízhōng)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">其实
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(qíshí)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">其次
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(qícì)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">其他
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(qítā)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Zhège
+			wèntí hěn jiǎndān, ___ dōu huì huídá.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">27.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">这个问题很简单，</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">都会回答。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">哪儿
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(nǎr)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">什么
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(shénme)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">多少
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(duōshao)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">谁
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(shéi)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Kàn
+			diànshì shíjiān cháng le huì shānghài yǎnjing, suǒyǐ
+			duì háizi ___.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">23.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">看电视时间长了会伤害眼睛，所以对孩子
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">有趣
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yǒuqù)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">有害
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yǒuhài)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">有空
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yǒu
+			kòng)<span class="tab"></span>D. </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">有用
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yǒuyòng)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Fúwùyuán,
+			qǐng gěi wǒmen ___, wǒmen xiǎng diǎn cài.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">28.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">服务员，请给我们
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">，我们想点菜。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">账单
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zhàngdān)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">菜单
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(càidān)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">信用卡
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(xìnyòngkǎ)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">气球
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(qìqiú)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Wǒmen
+			yào mǎi shuǐguǒ, ___, hái yào zhǔnbèi yǐnliào.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">24.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">我们要买水果，</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">，还要准备饮料。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">所以
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(suǒyǐ)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">虽然
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(suīrán)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">比如
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bǐrú)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">此外
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(cǐwài)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Wǒmen
+			yǒu liǎng ge háizi, qǐng ___ shǎo fàng yán.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">29.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">我们有两个孩子，请
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">少放盐。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">尽量
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(jǐnliàng)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">欢迎
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(huānyíng)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">光临
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(guānglín)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">支付
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zhīfù)</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Tā
+			xǐhuan dú shū, ___ tā gèng xǐhuan kàn diànyǐng.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">25.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">他喜欢读书，</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">她更喜欢看电影。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">把
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(bǎ)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">从
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(cóng)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">而
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(ér)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">着
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zhe)</font></font></p>
+		</td>
+		<td width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0in">
+			<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Tā
+			zài qún lǐ fā xiāoxi, ___ péngyoumen cānjiā shēngrì
+			pàiduì.</font></font></font></p>
+			<p style="margin-bottom: 0.01in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">30.
+			 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">他在群里发消息，</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">___
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">朋友们参加生日派对。</font></font></span></font></p>
+			<p style="margin-bottom: 0in"><font face="Arial, serif"><font size="2" style="font-size: 9pt">A.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">装饰
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zhuāngshì)<span class="tab"></span>B.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">支付
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(zhīfù)</font></font></p>
+			<p><font face="Arial, serif"><font size="2" style="font-size: 9pt">C.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">邀请
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(yāoqǐng)<span class="tab"></span>D.
+			</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt">复习
+			</font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 9pt">(fùxí)</font></font></p>
+		</td>
+	</tr>
+</table>
+<p style="line-height: 100%; margin-top: 0.04in; margin-bottom: 0.05in; background: #0b5c63">
+<font color="#ffffff">  <font face="Arial, serif"><font size="2" style="font-size: 9pt"><b>SEHEMU
+4 (31–40) · Kusoma bila pinyin na kuandika herufi · Reading
+without pinyin and writing characters · </b></font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 9pt"><b>无拼音阅读与写汉字</b></font></font></span></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0.03in"><font face="Arial, serif"><font size="2" style="font-size: 9pt"><b>Soma
+kifungu hiki (hakina pinyin), kisha zungushia jibu sahihi. · Read
+this passage (no pinyin), then circle the correct answer.</b></font></font></p>
+<p style="line-height: 0.24in; margin-bottom: 0.06in"><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 11pt">阿米娜是中学二年级的学生。她每天早上六点起床，七点从家里出发去学校。她家离学校不远，走路二十分钟就到。上课的时候，她一边认真听老师讲课，一边做笔记。放学以后，她先帮妈妈打扫房间，然后复习功课。周末，她喜欢用微信跟朋友聊天。她的爱好是看书和听音乐。</font></font></span></font></p>
+<p style="line-height: 100%; margin-bottom: 0.04in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">31.
+ </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">阿米娜几点起床？
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">A.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">五点
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">B.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">六点
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">C.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">七点</font></font></span></font></p>
+<p style="line-height: 100%; margin-bottom: 0.04in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">32.
+ </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">她怎么去学校？
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">A.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">坐公共汽车
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">B.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">坐高铁
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">C.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">走路</font></font></span></font></p>
+<p style="line-height: 100%; margin-bottom: 0.04in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">33.
+ </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">上课的时候，她做什么？
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">A.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">一边听课一边做笔记
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">B.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">一边听课一边聊天
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">C.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">一边听音乐一边看书</font></font></span></font></p>
+<p style="line-height: 100%; margin-bottom: 0.04in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">34.
+ </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">放学以后，她先做什么？
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">A.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">复习功课
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">B.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">打扫房间
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">C.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">跟朋友聊天</font></font></span></font></p>
+<p style="line-height: 100%; margin-bottom: 0.04in"><font face="Arial, serif"><font size="2" style="font-size: 10pt">35.
+ </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">她的爱好是什么？
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">A.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">踢足球和游泳
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">B.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">看电影和跳舞
+     </font></font></span></font><font face="Arial, serif"><font size="2" style="font-size: 10pt">C.
+</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="2" style="font-size: 10pt">看书和听音乐</font></font></span></font></p>
+<p style="line-height: 100%; margin-top: 0.05in; margin-bottom: 0.03in">
+<font face="Arial, serif"><font size="2" style="font-size: 9pt"><b>Andika
+herufi za Kichina kwa pinyin iliyo ndani ya [ ]. · Write the Chinese
+characters for the pinyin in [ ].</b></font></font></p>
+<table width="698" cellpadding="1" cellspacing="0">
+	<colgroup>
+		<col width="125"/>
+	</colgroup>
+	<colgroup>
+		<col width="125"/>
+	</colgroup>
+	<colgroup>
+		<col width="94"/>
+		<col width="29"/>
+	</colgroup>
+	<colgroup>
+		<col width="125"/>
+	</colgroup>
+	<colgroup>
+		<col width="189"/>
+	</colgroup>
+	<tbody>
+		<tr valign="top">
+			<td colspan="3" width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0.01in">
+				<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Yǒuxiē
+				zì nǐ xiě de bú tài [qīngchu].</font></font></font></p>
+				<p><font face="Arial, serif"><font size="3" style="font-size: 12pt">36.
+				 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 12pt">有些字你写得不太
+				（</font></font></span></font><font face="Arial, serif"><font size="3" style="font-size: 12pt">__________</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 12pt">）。</font></font></span></font></p>
+			</td>
+			<td colspan="3" width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0.01in">
+				<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Qǐng
+				[xuǎnzé] yí ge nǐ xǐhuan de huódòng.</font></font></font></p>
+				<p><font face="Arial, serif"><font size="3" style="font-size: 12pt">39.
+				 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 12pt">请
+				（</font></font></span></font><font face="Arial, serif"><font size="3" style="font-size: 12pt">__________</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 12pt">）
+				一个你喜欢的活动。</font></font></span></font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td colspan="3" width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0.01in">
+				<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Tā
+				jiā [yuànzi] lǐ yǒu yì kē dà shù.</font></font></font></p>
+				<p><font face="Arial, serif"><font size="3" style="font-size: 12pt">37.
+				 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 12pt">他家
+				（</font></font></span></font><font face="Arial, serif"><font size="3" style="font-size: 12pt">__________</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 12pt">）
+				里有一棵大树。</font></font></span></font></p>
+			</td>
+			<td colspan="3" width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0.01in">
+				<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Zhù
+				nǐ zhōumò [yúkuài]!</font></font></font></p>
+				<p><font face="Arial, serif"><font size="3" style="font-size: 12pt">40.
+				 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 12pt">祝你周末
+				（</font></font></span></font><font face="Arial, serif"><font size="3" style="font-size: 12pt">__________</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 12pt">）！</font></font></span></font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td colspan="3" width="347" style="border: none; padding: 0in"><p style="margin-bottom: 0.01in">
+				<font color="#b04a16">      <font face="Arial, serif"><font size="1" style="font-size: 7pt">Míngnián
+				wǒ xiǎng qù Zhōngguó [lǚxíng].</font></font></font></p>
+				<p><font face="Arial, serif"><font size="3" style="font-size: 12pt">38.
+				 </font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 12pt">明年我想去中国
+				（</font></font></span></font><font face="Arial, serif"><font size="3" style="font-size: 12pt">__________</font></font><font face="Noto Serif CJK SC"><span lang="zh-CN"><font face="SimSun"><font size="3" style="font-size: 12pt">）。</font></font></span></font></p>
+			</td>
+			<td colspan="3" width="347" style="border: none; padding: 0in"><p><br/>
+
+				</p>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr valign="top">
+			<td width="125" style="border: 1px solid #808080; padding: 0.02in 0.06in"><p>
+				<font face="Arial, serif"><font size="2" style="font-size: 9pt">Sehemu
+				1:  ____ / 10</font></font></p>
+			</td>
+			<td width="125" style="border: 1px solid #808080; padding: 0.02in 0.06in"><p>
+				<font face="Arial, serif"><font size="2" style="font-size: 9pt">Sehemu
+				2:  ____ / 10</font></font></p>
+			</td>
+			<td colspan="2" width="125" style="border: 1px solid #808080; padding: 0.02in 0.06in"><p>
+				<font face="Arial, serif"><font size="2" style="font-size: 9pt">Sehemu
+				3:  ____ / 10</font></font></p>
+			</td>
+			<td width="125" style="border: 1px solid #808080; padding: 0.02in 0.06in"><p>
+				<font face="Arial, serif"><font size="2" style="font-size: 9pt">Sehemu
+				4:  ____ / 10</font></font></p>
+			</td>
+			<td width="189" style="border: 1px solid #808080; padding: 0.02in 0.06in"><p>
+				<font face="Arial, serif"><font size="2" style="font-size: 9pt">Jumla
+				· Total:  ____ / 40</font></font></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</main>
+</body>
+</html>
