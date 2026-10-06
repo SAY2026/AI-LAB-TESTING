@@ -1,6 +1,6 @@
 /* SAY AI Lab offline cache. Bump VERSION whenever the pages change. */
-var VERSION = "say-v7";
-var ASSETS = ["safari-ya-kichina.html", "safari.webmanifest", "safari-icon-192.png", "safari-icon-512.png", "safari-icon-180.png", "f2-online.html", "f4-online.html", "f2-kit.html", "f2kit-dodoso-kabla.html", "f2kit-jaribio-a.html", "f2kit-jaribio-b.html", "f2kit-mtihani.html", "f2kit-dodoso-baada.html", "f2kit-kijitabu.html", "f2kit-mwalimu.html", "f2kit-handbook.html"];
+var VERSION = "say-v8";
+var ASSETS = ["safari-ya-kichina.html", "safari.webmanifest", "safari-icon-192.png", "safari-icon-512.png", "safari-icon-180.png", "f2-online.html", "f4-online.html", "f2-kit.html", "f2kit-dodoso-kabla.html", "f2kit-jaribio-a.html", "f2kit-jaribio-b.html", "f2kit-mtihani.html", "f2kit-dodoso-baada.html", "f2kit-kijitabu.html", "f2kit-kijitabu2.html", "f2kit-mwalimu.html", "f2kit-handbook.html"];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(ASSETS); }).then(function () { return self.skipWaiting(); }));
 });
